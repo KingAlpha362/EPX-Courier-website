@@ -37,9 +37,9 @@ export default function Why() {
         <section ref={sectionRef} className="bg-primary-dark overflow-hidden" id="why">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 items-start">
-                    <div className="lg:w-1/2 w-full lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] min-h-[400px] mb-10 lg:mb-0">
+                    <div className="lg:w-1/2 w-full lg:sticky lg:top-20 lg:self-start h-[300px] md:h-[450px] lg:h-[calc(100vh-5rem)] mb-10 lg:mb-0">
                         <div
-                            className="relative w-full h-full min-h-[400px] overflow-hidden"
+                            className="relative w-full h-full overflow-hidden"
                             style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
                         >
                             <img
@@ -56,7 +56,7 @@ export default function Why() {
 
                     <div className="lg:w-1/2 why-animate">
                         <span className="label-caps text-accent-red mb-4 block">Why Partner With E.P.X?</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight text-balance max-w-xl">
+                        <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-8 leading-tight text-balance max-w-xl">
                             The <span className="text-accent-red">Precision Logistics</span> Evolution.
                         </h2>
                         <p className="text-lg text-white/70 font-inter mb-12 leading-relaxed">

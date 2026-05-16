@@ -118,7 +118,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="hero-title font-display text-6xl md:text-8xl lg:text-9xl font-extrabold text-white mb-6 leading-[0.95] tracking-[-0.02em]"
+            className="hero-title font-display text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-6 leading-[0.95] tracking-[-0.02em]"
             data-splitting
           >
             Think Big.
@@ -132,10 +132,10 @@ export default function Hero() {
           </p>
 
           <div className="hero-animate-up flex flex-col sm:flex-row w-full sm:w-auto gap-4">
-            <a href="https://www.epx.co.za/" target="_blank" rel="noreferrer" className="btn-hero-primary text-center">
+            <a href="https://www.epx.co.za/" target="_blank" rel="noreferrer" className="btn-hero-primary w-full sm:w-auto text-center py-5 sm:py-3.5">
               Start Shipping Today
             </a>
-            <a href="https://epx.pperfect.com/" target="_blank" rel="noreferrer" className="btn-hero-ghost text-center">
+            <a href="https://epx.pperfect.com/" target="_blank" rel="noreferrer" className="btn-hero-ghost w-full sm:w-auto text-center py-5 sm:py-3.5">
               Track My Parcel
             </a>
           </div>

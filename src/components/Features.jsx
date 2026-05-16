@@ -70,18 +70,16 @@ export default function Features() {
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="features-section-title reveal mb-10">
                     <span className="label-caps text-accent-red mb-2 block">Our Capabilities</span>
-                    <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary">Precision Logistics. <br/><span className="text-accent-red">At Scale.</span></h2>
+                    <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary">Precision Logistics. <br/><span className="text-accent-red">At Scale.</span></h2>
                 </div>
 
-                <div className="flex flex-col gap-10 md:gap-12">
+                <div className="flex flex-col gap-16 md:gap-24">
                     {featureStories.map((story, idx) => (
                         <div
                             key={idx}
-                            className="feature-card flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12"
+                            className="feature-card flex flex-col md:flex-row items-center gap-8 md:gap-16 even:md:flex-row-reverse"
                         >
-                            <div
-                                className={`lg:w-[45%] feature-img-wrap group ${idx % 2 !== 0 ? 'lg:order-last' : ''}`}
-                            >
+                            <div className="w-full md:w-1/2 feature-img-wrap group">
                                 <img
                                     src={story.image}
                                     alt={story.title}
@@ -89,22 +87,22 @@ export default function Features() {
                                     height={600}
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-full h-full aspect-[16/10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                                    className="w-full h-full aspect-[16/10] md:aspect-auto object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                                 />
                             </div>
 
-                            <div className="feature-card__body lg:w-[55%] flex flex-col justify-center border-l-4 border-accent-red pl-6 md:pl-8">
-                                <span className="label-caps text-accent-red mb-2 block">
+                            <div className="feature-card__body w-full md:w-1/2 flex flex-col justify-center border-l-4 border-accent-red pl-6 md:pl-10">
+                                <span className="label-caps text-accent-red mb-3 block">
                                     {story.subtitle}
                                 </span>
-                                <h3 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-6 leading-tight">
+                                <h3 className="font-display text-4xl md:text-5xl font-bold text-text-primary mb-6 leading-tight">
                                     {story.title}
                                 </h3>
-                                <p className="text-text-primary/70 font-inter text-base mb-8 leading-relaxed max-w-xl">
+                                <p className="text-text-primary/70 font-inter text-base md:text-lg mb-8 leading-relaxed max-w-xl">
                                     {story.description}
                                 </p>
-                                <a href="#" className="inline-block text-accent-red font-inter font-semibold text-sm uppercase tracking-wider border-b border-accent-red pb-0.5 hover:text-[#b80018] hover:border-[#b80018] transition-all">
-                                    Learn More →
+                                <a href="#" className="inline-flex items-center text-accent-red font-inter font-semibold text-sm uppercase tracking-wider border-b-2 border-accent-red py-2 hover:text-[#b80018] hover:border-[#b80018] transition-all self-start">
+                                    Learn More <span className="ml-2">→</span>
                                 </a>
                             </div>
                         </div>

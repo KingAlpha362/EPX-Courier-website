@@ -54,23 +54,23 @@ export default function Footer() {
 
           <div>
             <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-5">Services</h5>
-            <div className="flex flex-col gap-4 text-[#94A3B8] text-sm font-inter">
-              <a href="#features" className="hover:text-white transition-colors">Same-Day Express</a>
-              <a href="#features" className="hover:text-white transition-colors">Overnight Delivery</a>
-              <a href="#solutions" className="hover:text-white transition-colors">Bulk Freight</a>
-              <a href="#features" className="hover:text-white transition-colors">Warehouse & Hub</a>
-              <a href="#portfolio" className="hover:text-white transition-colors">Managed Logistics</a>
+            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm font-inter">
+              <a href="#features" className="hover:text-white transition-colors py-2">Same-Day Express</a>
+              <a href="#features" className="hover:text-white transition-colors py-2">Overnight Delivery</a>
+              <a href="#solutions" className="hover:text-white transition-colors py-2">Bulk Freight</a>
+              <a href="#features" className="hover:text-white transition-colors py-2">Warehouse & Hub</a>
+              <a href="#portfolio" className="hover:text-white transition-colors py-2">Managed Logistics</a>
             </div>
           </div>
 
           <div>
             <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-8">Quick Links</h5>
-            <div className="flex flex-col gap-4 text-[#94A3B8] text-sm font-inter">
-              <a href="https://epx.pperfect.com/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Track Your Parcel</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Get a Quote</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Search Branch</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Client Portal</a>
-              <a href="#why" className="hover:text-white transition-colors">Our Story</a>
+            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm font-inter">
+              <a href="https://epx.pperfect.com/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Track Your Parcel</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Get a Quote</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Search Branch</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Client Portal</a>
+              <a href="#why" className="hover:text-white transition-colors py-2">Our Story</a>
             </div>
           </div>
 

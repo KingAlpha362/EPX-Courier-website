@@ -19,12 +19,18 @@
     color: var(--text-primary);
     background-color: var(--surface-white);
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 15px; /* Mobile target */
     font-weight: 400;
     line-height: 1.65;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+  }
+
+  @media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
   }
   
   section {

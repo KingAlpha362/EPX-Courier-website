@@ -71,6 +71,8 @@ export default function CoverageMap() {
           if (entry.isIntersecting && !statsAnimated.current) {
             new CountUp('map-stat-km', 1.2, { duration: 2, decimalPlaces: 1 }).start();
             new CountUp('map-stat-towns', 2400, { duration: 2, separator: ',' }).start();
+            new CountUp('map-stat-km-mobile', 1.2, { duration: 2, decimalPlaces: 1 }).start();
+            new CountUp('map-stat-towns-mobile', 2400, { duration: 2, separator: ',' }).start();
             statsAnimated.current = true;
             statObserver.disconnect();
           }
@@ -93,7 +95,7 @@ export default function CoverageMap() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
         <div className="map-header reveal text-center mb-12">
           <span className="label-caps text-accent-red mb-4 block">Our Coverage</span>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-display text-3xl md:text-6xl font-bold text-white leading-tight">
             Moving South Africa <span className="text-accent-red">Everywhere.</span>
           </h2>
           <p className="mt-6 text-white/50 max-w-2xl mx-auto font-inter text-lg">
@@ -102,7 +104,7 @@ export default function CoverageMap() {
           </p>
         </div>
 
-        <div className="sa-map-container relative max-w-4xl mx-auto aspect-[4/3] flex items-center justify-center">
+        <div className="sa-map-container relative max-w-4xl mx-auto aspect-square md:aspect-[4/3] flex items-center justify-center">
           <img
             src={COVERAGE.map}
             alt="South Africa coverage map outline"
@@ -134,7 +136,7 @@ export default function CoverageMap() {
 
           <div
             id="map-stats-card"
-            className="absolute bottom-0 right-0 bg-white/[0.05] backdrop-blur-[12px] border border-white/10 p-6 rounded-lg z-20"
+            className="hidden md:block absolute bottom-0 right-0 bg-white/[0.05] backdrop-blur-[12px] border border-white/10 p-6 rounded-lg z-20"
           >
             <div className="flex flex-col gap-4">
               <div>
@@ -149,6 +151,20 @@ export default function CoverageMap() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Mobile Stats Card */}
+        <div className="md:hidden mt-8 grid grid-cols-2 gap-4 bg-white/[0.05] border border-white/10 p-5 rounded-lg">
+            <div>
+                <span className="label-caps text-accent-red mb-1 block text-[9px]">Total Coverage</span>
+                <span className="text-xl font-barlow font-black text-white"><span id="map-stat-km-mobile">0</span>M SQ KM</span>
+            </div>
+            <div>
+                <span className="label-caps text-accent-red mb-1 block text-[9px]">Fleet Reach</span>
+                <span className="text-xl font-barlow font-black text-white">
+                    <span id="map-stat-towns-mobile">0</span> TOWNS
+                </span>
+            </div>
         </div>
       </div>
     </section>

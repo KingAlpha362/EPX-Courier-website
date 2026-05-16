@@ -65,7 +65,7 @@ export default function Services() {
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="services-header reveal mb-10">
                     <span className="label-caps text-accent-red mb-2 block">Our Solutions</span>
-                    <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary leading-tight">
+                    <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary leading-tight">
                         Every Delivery Need. <br/><span className="text-accent-red">Covered.</span>
                     </h2>
                 </div>
@@ -75,7 +75,7 @@ export default function Services() {
                         <a
                             key={idx}
                             href="#"
-                            className="service-card group relative block h-[420px] rounded-[6px] overflow-hidden transition-transform duration-500 hover:scale-[1.02]"
+                            className="service-card group relative block h-[320px] md:h-[420px] rounded-[6px] overflow-hidden transition-transform duration-500 hover:scale-[1.02]"
                         >
                             <img
                                 src={service.image}
