@@ -86,15 +86,26 @@ export default function Hero() {
       className="hero-section relative min-h-screen flex items-center overflow-hidden bg-primary-dark noise-overlay border-b-[3px] border-brand-gold"
     >
       <div className="absolute inset-0 z-0 hero-split-overlay">
-        <img
-          src={HERO.background}
-          alt="EPX Fleet in Motion"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          decoding="async"
-          className="hero-bg-img w-full h-full object-cover object-right"
-        />
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet={HERO.backgroundMobile}
+            type="image/webp"
+          />
+          <source
+            srcSet={HERO.background}
+            type="image/webp"
+          />
+          <img
+            src={HERO.background}
+            alt="EPX Fleet in Motion"
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            decoding="async"
+            className="hero-bg-img w-full h-full object-cover object-right"
+          />
+        </picture>
       </div>
 
       <HeroRouteOverlay />
