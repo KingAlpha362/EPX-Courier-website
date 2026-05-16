@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/ui/Header2';
 import Hero from './components/Hero';
 import HeroTrustSection from './components/HeroTrustSection';
@@ -44,6 +45,7 @@ function App() {
       <PageLoader onComplete={() => setReady(true)} />
       <CustomCursor />
       {ready && <AppContent />}
+      <SpeedInsights />
     </>
   );
 }
