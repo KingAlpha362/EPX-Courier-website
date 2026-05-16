@@ -73,13 +73,13 @@ export default function Features() {
                     <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary">Precision Logistics. <br/><span className="text-accent-red">At Scale.</span></h2>
                 </div>
 
-                <div className="flex flex-col gap-16 md:gap-24">
+                <div className="flex flex-col gap-20 md:gap-32">
                     {featureStories.map((story, idx) => (
                         <div
                             key={idx}
-                            className="feature-card flex flex-col md:flex-row items-center gap-8 md:gap-16 even:md:flex-row-reverse"
+                            className="feature-card flex flex-col md:flex-row md:even:flex-row-reverse items-center gap-10 md:gap-20"
                         >
-                            <div className="w-full md:w-1/2 feature-img-wrap group">
+                            <div className="w-full md:w-1/2 aspect-video overflow-hidden rounded-[2px] shadow-lg">
                                 <img
                                     src={story.image}
                                     alt={story.title}
@@ -87,21 +87,21 @@ export default function Features() {
                                     height={600}
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-full h-full aspect-[16/10] md:aspect-auto object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                                    className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                                 />
                             </div>
 
-                            <div className="feature-card__body w-full md:w-1/2 flex flex-col justify-center border-l-4 border-accent-red pl-6 md:pl-10">
-                                <span className="label-caps text-accent-red mb-3 block">
+                            <div className="feature-card__body w-full md:w-1/2 flex flex-col justify-center border-l-4 border-accent-red pl-8 md:pl-12">
+                                <span className="label-caps text-accent-red mb-4 block font-bold text-xs tracking-[0.2em]">
                                     {story.subtitle}
                                 </span>
-                                <h3 className="font-display text-4xl md:text-5xl font-bold text-text-primary mb-6 leading-tight">
+                                <h3 className="font-display text-4xl md:text-5xl font-black text-text-primary mb-6 uppercase leading-[0.95]">
                                     {story.title}
                                 </h3>
                                 <p className="text-text-primary/70 font-inter text-base md:text-lg mb-8 leading-relaxed max-w-xl">
                                     {story.description}
                                 </p>
-                                <a href="#" className="inline-flex items-center text-accent-red font-inter font-semibold text-sm uppercase tracking-wider border-b-2 border-accent-red py-2 hover:text-[#b80018] hover:border-[#b80018] transition-all self-start">
+                                <a href="#" className="inline-flex items-center text-accent-red font-inter font-bold text-xs uppercase tracking-[0.2em] border-b-2 border-accent-red py-2 hover:text-[#b80018] hover:border-[#b80018] transition-all self-start">
                                     Learn More <span className="ml-2">→</span>
                                 </a>
                             </div>

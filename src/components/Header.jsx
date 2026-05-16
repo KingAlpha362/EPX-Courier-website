@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
@@ -71,15 +72,15 @@ export default function Header() {
                     size="icon" 
                     variant="outline" 
                     onClick={() => setOpen(!open)} 
-                    className={cn("md:hidden transition-all border-white/20 text-white hover:bg-white/10")}
+                    className={cn("md:hidden flex items-center justify-center h-12 w-12 transition-all border-white/20 text-white hover:bg-white/10")}
                 >
-					<MenuToggleIcon open={open} className="size-5" duration={300} />
+					<MenuToggleIcon open={open} className="size-6" duration={300} />
 				</Button>
 			</nav>
 
 			<div
 				className={cn(
-					'bg-primary-dark fixed inset-0 z-[60] flex flex-col md:hidden transition-all duration-500 ease-in-out',
+					'bg-primary-dark/98 backdrop-blur-xl fixed inset-0 z-[60] flex flex-col md:hidden transition-all duration-500 ease-in-out',
 					open ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
 				)}
 			>

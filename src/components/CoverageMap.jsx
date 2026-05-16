@@ -112,7 +112,7 @@ export default function CoverageMap() {
             height={600}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-contain opacity-50 grayscale brightness-125"
+            className="absolute inset-0 w-full h-full object-contain"
           />
 
           <svg viewBox="0 0 800 600" className="relative z-10 w-full h-full">

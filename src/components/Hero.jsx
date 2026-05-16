@@ -103,14 +103,14 @@ export default function Hero() {
             height={1080}
             fetchPriority="high"
             decoding="async"
-            className="hero-bg-img w-full h-full object-cover object-right"
+            className="hero-bg-img w-full h-full object-cover object-[25%_center] md:object-right"
           />
         </picture>
       </div>
 
       <HeroRouteOverlay />
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start px-4 md:px-8 pt-28 pb-32 md:pb-36 relative z-20">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start px-6 md:px-8 pt-28 pb-32 md:pb-36 relative z-20">
         <div className="flex flex-col items-start max-w-4xl">
           <div className="hero-animate-up inline-flex items-center gap-3 mb-8">
             <div className="w-8 h-[2px] bg-accent-red" />
@@ -118,7 +118,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="hero-title font-display text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-6 leading-[0.95] tracking-[-0.02em]"
+            className="hero-title font-display text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-8 md:mb-6 leading-[0.95] tracking-[-0.02em] text-center md:text-left"
             data-splitting
           >
             Think Big.
@@ -126,19 +126,19 @@ export default function Hero() {
             <span className="text-accent-red">Deliver Bigger.</span>
           </h1>
 
-          <p className="hero-animate-up font-inter text-lg md:text-xl text-white/70 mb-10 max-w-[480px] leading-relaxed">
+          <div className="hero-animate-up flex flex-col sm:flex-row w-full sm:w-auto gap-4 mb-8">
+            <a href="https://www.epx.co.za/" target="_blank" rel="noreferrer" className="btn-hero-primary w-full sm:w-auto text-center py-5 sm:py-3.5">
+              Start Shipping Today →
+            </a>
+            <a href="https://epx.pperfect.com/" target="_blank" rel="noreferrer" className="btn-hero-ghost w-full sm:w-auto text-center py-5 sm:py-3.5">
+              Track My Parcel →
+            </a>
+          </div>
+
+          <p className="hero-animate-up font-inter text-sm text-white/70 max-w-[480px] leading-relaxed text-center md:text-left">
             South Africa&apos;s trusted enterprise-grade courier network.
             Moving your business forward with precision, scale, and unmatched reliability.
           </p>
-
-          <div className="hero-animate-up flex flex-col sm:flex-row w-full sm:w-auto gap-4">
-            <a href="https://www.epx.co.za/" target="_blank" rel="noreferrer" className="btn-hero-primary w-full sm:w-auto text-center py-5 sm:py-3.5">
-              Start Shipping Today
-            </a>
-            <a href="https://epx.pperfect.com/" target="_blank" rel="noreferrer" className="btn-hero-ghost w-full sm:w-auto text-center py-5 sm:py-3.5">
-              Track My Parcel
-            </a>
-          </div>
         </div>
       </div>
 

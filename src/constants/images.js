@@ -51,3 +51,7 @@ export const GALLERY = [
 export const COVERAGE = {
   map: `${base}/coverage/south-africa-map.webp`,
 }
+
+export const CTA_IMG = {
+  background: `${base}/epx-footer-img.jpg`,
+}

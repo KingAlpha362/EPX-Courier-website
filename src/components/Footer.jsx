@@ -38,15 +38,15 @@ export default function Footer() {
               National express courier with an exceptional footprint across South Africa — our own fleet, world-class tracking, and a management team
               that believes in personal service. Founded April 1999 as Edwards Parcel Express.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-7 h-7 border border-white/20 rounded-[3px] flex items-center justify-center p-1 hover:bg-accent-red hover:border-accent-red transition-colors duration-200"
+                  className="w-11 h-11 border border-white/20 rounded-[3px] flex items-center justify-center p-2.5 hover:bg-accent-red hover:border-accent-red transition-colors duration-200"
                 >
-                  <Flaticon icon={s.icon} className="w-4 h-4 opacity-90" alt="" />
+                  <Flaticon icon={s.icon} className="w-5 h-5 opacity-90" alt="" />
                 </a>
               ))}
             </div>

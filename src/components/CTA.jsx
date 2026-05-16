@@ -1,4 +1,4 @@
-import { HERO } from '@/constants/images';
+import { CTA_IMG } from '@/constants/images';
 import { Flaticon } from '@/components/ui/Flaticon';
 
 function PhoneIcon() {
@@ -17,12 +17,14 @@ const trustBadges = [
 
 export default function CTA() {
   return (
-    <section className="bg-primary-dark relative overflow-hidden">
+    <section className="bg-primary-dark relative overflow-hidden py-24">
       <img
-        src={HERO.background}
+        src={CTA_IMG.background}
         alt=""
         aria-hidden
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.12] grayscale pointer-events-none"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
       />
       <div className="absolute inset-0 bg-texture opacity-5 pointer-events-none" />
 
