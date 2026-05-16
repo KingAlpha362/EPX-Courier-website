@@ -57,7 +57,7 @@ export default function Why() {
                     <div className="lg:w-1/2 why-animate">
                         <span className="label-caps text-accent-red mb-4 block">Why Partner With E.P.X?</span>
                         <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight text-balance max-w-xl">
-                            A Polished Evolution<br />of <span className="text-accent-red">Precision Logistics.</span>
+                            The <span className="text-accent-red">Precision Logistics</span> Evolution.
                         </h2>
                         <p className="text-lg text-white/70 font-inter mb-12 leading-relaxed">
                             Brothers James and Garreth Edwards founded Edwards Parcel Express in April 1999, starting with an overnight express

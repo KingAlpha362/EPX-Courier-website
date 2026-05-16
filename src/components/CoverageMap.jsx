@@ -15,8 +15,8 @@ function HubPulse({ x, y, delay }) {
         r="4"
         fill="none"
         stroke="#E8001D"
-        strokeWidth="1.5"
-        opacity="0.8"
+        strokeWidth="2"
+        opacity="0.9"
       >
         <animate
           attributeName="r"
@@ -110,7 +110,7 @@ export default function CoverageMap() {
             height={600}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-contain opacity-35 grayscale brightness-125"
+            className="absolute inset-0 w-full h-full object-contain opacity-50 grayscale brightness-125"
           />
 
           <svg viewBox="0 0 800 600" className="relative z-10 w-full h-full">
@@ -120,11 +120,11 @@ export default function CoverageMap() {
                 className="route-path"
                 d={d}
                 stroke="#E8001D"
-                strokeWidth="1.5"
+                strokeWidth="2"
                 fill="none"
                 strokeDasharray="1000"
                 strokeDashoffset="1000"
-                opacity="0.7"
+                opacity="0.9"
               />
             ))}
             {COVERAGE_HUBS.map((hub, i) => (

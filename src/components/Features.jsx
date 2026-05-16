@@ -89,7 +89,7 @@ export default function Features() {
                                     height={600}
                                     loading="lazy"
                                     decoding="async"
-                                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                                    className="w-full h-full aspect-[16/10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                                 />
                             </div>
 
