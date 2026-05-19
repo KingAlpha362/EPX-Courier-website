@@ -13,8 +13,8 @@ export const BRAND = {
 }
 
 export const HERO = {
-  background: `${base}/hero/hero-fleet.webp`,
-  backgroundMobile: `${base}/hero/hero-fleet-mobile.webp`,
+  background: `${base}/gallery/depot-operations.webp`,
+  backgroundMobile: `${base}/gallery/depot-operations.webp`,
 }
 
 export const SERVICES = {
@@ -41,7 +41,7 @@ export const PORTFOLIO = {
 }
 
 export const GALLERY = [
-  { src: `${base}/gallery/depot-operations.webp`, label: 'Depot Operations', caption: 'FLEET OPS', aspect: 'portrait' },
+  { src: `${base}/hero/hero-fleet.webp`, label: 'Depot Operations', caption: 'FLEET OPS', aspect: 'portrait' },
   { src: `${base}/gallery/team-collaboration.webp`, label: 'Team Collaboration', caption: 'LAST-MILE', aspect: 'portrait' },
   { src: `${base}/gallery/sorting-center.webp`, label: 'Sorting Center', caption: 'SORTATION', aspect: 'landscape' },
   { src: `${base}/gallery/customer-service.webp`, label: 'Customer Service', caption: 'HUB OPS', aspect: 'portrait' },

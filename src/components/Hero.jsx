@@ -8,38 +8,6 @@ import 'splitting/dist/splitting-cells.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function HeroRouteOverlay() {
-  return (
-    <svg
-      className="absolute left-0 top-0 w-1/2 h-full z-[15] pointer-events-none opacity-40"
-      viewBox="0 0 400 400"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden
-    >
-      <circle cx="120" cy="200" r="6" fill="#E8001D" opacity="0.9" />
-      <path
-        d="M120 200 L280 120 M120 200 L320 200 M120 200 L240 300 M120 200 L80 80 M120 200 L60 280"
-        stroke="#E8001D"
-        strokeWidth="1.5"
-        strokeDasharray="6 4"
-        fill="none"
-        className="animate-draw-route"
-        style={{ strokeDashoffset: 0 }}
-      />
-      <path
-        d="M120 200 L180 60 M120 200 L200 340"
-        stroke="#E8001D"
-        strokeWidth="1"
-        strokeDasharray="4 6"
-        fill="none"
-        opacity="0.6"
-        className="animate-draw-route"
-        style={{ animationDelay: '0.5s' }}
-      />
-    </svg>
-  );
-}
-
 export default function Hero() {
   const heroRef = useRef(null);
 
@@ -108,8 +76,6 @@ export default function Hero() {
         </picture>
       </div>
 
-      <HeroRouteOverlay />
-
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start px-6 md:px-8 pt-28 pb-32 md:pb-36 relative z-20">
         <div className="flex flex-col items-start max-w-4xl">
           <div className="hero-animate-up inline-flex items-center gap-3 mb-8">
@@ -118,7 +84,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="hero-title font-display text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-8 md:mb-6 leading-[0.95] tracking-[-0.02em] text-center md:text-left"
+            className="hero-title font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-8 md:mb-6 leading-[0.95] tracking-[-0.02em] text-center md:text-left"
             data-splitting
           >
             Think Big.

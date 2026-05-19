@@ -13,7 +13,7 @@ export function Flaticon({ icon, className, alt = '' }) {
       height={24}
       loading="lazy"
       decoding="async"
-      className={cn('object-contain shrink-0', className)}
+      className={cn('flaticon-icon object-contain shrink-0', className)}
     />
   );
 }

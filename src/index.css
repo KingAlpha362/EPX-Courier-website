@@ -211,6 +211,25 @@
     transform-origin: center;
     transform-box: fill-box;
   }
+
+  /* Flaticon color correction: default to black, invert to white on dark backgrounds */
+  .flaticon-icon {
+    filter: brightness(0);
+  }
+
+  .bg-primary-dark .flaticon-icon,
+  [class*="bg-primary-dark"] .flaticon-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Explicit color overrides */
+  .flaticon-white {
+    filter: brightness(0) invert(1) !important;
+  }
+
+  .flaticon-black {
+    filter: brightness(0) !important;
+  }
 }
 
 @layer utilities {
