@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HeroTrustSection from './components/HeroTrustSection';
@@ -10,7 +9,6 @@ import Why from './components/Why';
 import Portfolio from './components/Portfolio';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import PageLoader from './components/PageLoader';
 import CustomCursor from './components/CustomCursor';
 import { useSectionReveal } from './hooks/useSectionReveal';
 
@@ -40,13 +38,10 @@ function AppContent() {
 }
 
 function App() {
-  const [ready, setReady] = useState(false);
-
   return (
     <>
-      <PageLoader onComplete={() => setReady(true)} />
       <CustomCursor />
-      {ready && <AppContent />}
+      <AppContent />
     </>
   );
 }
