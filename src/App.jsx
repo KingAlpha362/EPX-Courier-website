@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Header } from './components/ui/Header2';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -42,7 +39,6 @@ function App() {
   return (
     <>
       <CustomCursor />
-      {ready && <AppContent />}
       <AppContent />
       <SpeedInsights />
     </>
