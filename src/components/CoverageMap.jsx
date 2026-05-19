@@ -1,11 +1,7 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CountUp } from 'countup.js';
 import { COVERAGE } from '@/constants/images';
 import { COVERAGE_HUBS, COVERAGE_ROUTES } from '@/constants/coverageHubs';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function HubPulse({ x, y, delay }) {
   return (
@@ -42,28 +38,6 @@ export default function CoverageMap() {
   const statsAnimated = useRef(false);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.map-header', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: '.map-header',
-          start: 'top 85%',
-        },
-      });
-
-      gsap.to('.route-path', {
-        strokeDashoffset: 0,
-        duration: 2.5,
-        stagger: 0.3,
-        ease: 'power1.inOut',
-        scrollTrigger: {
-          trigger: '.sa-map-container',
-          start: 'top 70%',
-        },
-      });
-    }, mapRef);
 
     const statObserver = new IntersectionObserver(
       (entries) => {
@@ -85,15 +59,14 @@ export default function CoverageMap() {
     if (statEl) statObserver.observe(statEl);
 
     return () => {
-      ctx.revert();
       statObserver.disconnect();
     };
   }, []);
 
   return (
-    <section ref={mapRef} className="bg-primary-dark overflow-hidden noise-overlay">
+    <section className="bg-primary-dark overflow-hidden noise-overlay">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        <div className="map-header reveal text-center mb-12">
+        <div className="map-header text-center mb-12">
           <span className="label-caps text-accent-red mb-4 block">Our Coverage</span>
           <h2 className="font-display text-3xl md:text-6xl font-bold text-white leading-tight">
             Moving South Africa <span className="text-accent-red">Everywhere.</span>
@@ -124,8 +97,6 @@ export default function CoverageMap() {
                 stroke="#E8001D"
                 strokeWidth="2"
                 fill="none"
-                strokeDasharray="1000"
-                strokeDashoffset="1000"
                 opacity="0.9"
               />
             ))}

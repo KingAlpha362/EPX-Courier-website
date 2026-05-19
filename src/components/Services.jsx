@@ -1,11 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from 'react';
 import { SERVICES } from '@/constants/images';
 import { Flaticon } from '@/components/ui/Flaticon';
 import { cn } from '@/lib/utils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
     {
@@ -47,21 +43,7 @@ export default function Services() {
     const scrollRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".services-header", {
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".services-header",
-                    start: "top 85%"
-                }
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
+
 
     const handleScroll = () => {
         if (!scrollRef.current) return;
@@ -72,9 +54,9 @@ export default function Services() {
     };
 
     return (
-        <section ref={sectionRef} className="bg-surface-light overflow-hidden py-20" id="solutions">
+        <section className="bg-surface-light overflow-hidden py-20" id="solutions">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-                <div className="services-header reveal mb-12 text-center md:text-left">
+                <div className="mb-12 text-center md:text-left">
                     <span className="label-caps text-accent-red mb-2 block font-semibold tracking-widest text-xs">Our Solutions</span>
                     <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[0.95] tracking-tight uppercase">
                         Every Delivery Need. <br /><span className="text-accent-red">Covered.</span>

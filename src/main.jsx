@@ -1,12 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Lenis from '@studio-freight/lenis'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './index.css'
 import App from './App.jsx'
-
-gsap.registerPlugin(ScrollTrigger)
 
 // Disable smooth scroll on touch/mobile devices for native performance
 const isTouchOrMobile = typeof window !== 'undefined' && 
@@ -19,21 +15,12 @@ if (!isTouchOrMobile) {
     smoothWheel: true,
   })
 
-  lenis.on('scroll', ScrollTrigger.update)
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000)
-  })
-  gsap.ticker.lagSmoothing(0)
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+  requestAnimationFrame(raf)
 }
-
-const onResize = () => ScrollTrigger.refresh()
-window.addEventListener('resize', onResize)
-requestAnimationFrame(() => ScrollTrigger.refresh())
-
-const refreshScrollTriggers = () => ScrollTrigger.refresh()
-window.addEventListener('load', refreshScrollTriggers)
-document.fonts?.ready?.then(() => ScrollTrigger.refresh())
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

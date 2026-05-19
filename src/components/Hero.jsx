@@ -1,52 +1,8 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Splitting from 'splitting';
 import { HERO } from '@/constants/images';
-import 'splitting/dist/splitting.css';
-import 'splitting/dist/splitting-cells.css';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const heroRef = useRef(null);
-
-  useEffect(() => {
-    Splitting();
-
-    const ctx = gsap.context(() => {
-      gsap.from('.hero-title .char', {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.02,
-        ease: 'power3.out',
-        delay: 0.3,
-      });
-
-      gsap.from('.hero-animate-up', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power4.out',
-        delay: 0.6,
-      });
-
-      gsap.to('.hero-bg-img', {
-        yPercent: 20,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section

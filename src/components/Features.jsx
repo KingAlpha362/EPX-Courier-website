@@ -1,9 +1,4 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FEATURES } from '@/constants/images';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const featureStories = [
     {
@@ -33,42 +28,11 @@ const featureStories = [
 ];
 
 export default function Features() {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".features-section-title", {
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".features-section-title",
-                    start: "top 85%"
-                }
-            });
-
-            gsap.utils.toArray('.feature-card__body').forEach((body, i) => {
-                gsap.from(body, {
-                    opacity: 0,
-                    x: i % 2 === 0 ? -48 : 48,
-                    duration: 1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: body.closest('.feature-card'),
-                        start: "top 80%"
-                    }
-                });
-            });
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, []);
 
     return (
-        <section ref={containerRef} id="features" className="bg-surface-white overflow-hidden">
+        <section id="features" className="bg-surface-white overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-                <div className="features-section-title reveal mb-10">
+                <div className="mb-10">
                     <span className="label-caps text-accent-red mb-2 block">Our Capabilities</span>
                     <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary">Precision Logistics. <br/><span className="text-accent-red">At Scale.</span></h2>
                 </div>

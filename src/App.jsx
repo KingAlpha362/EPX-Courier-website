@@ -10,14 +10,11 @@ import Portfolio from './components/Portfolio';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import { useSectionReveal } from './hooks/useSectionReveal';
 
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 
 function AppContent() {
-  useSectionReveal();
-
   return (
     <>
       <Header />
