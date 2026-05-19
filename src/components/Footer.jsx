@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 pt-14 pb-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="flex flex-col items-start gap-5">
-            <BrandLogo variant="dark" className="h-14" loading="eager" />
+            <BrandLogo variant="dark" className="h-14" loading="lazy" />
             <p className="text-[#94A3B8] text-sm font-inter leading-relaxed max-w-xs">
               National express courier with an exceptional footprint across South Africa — our own fleet, world-class tracking, and a management team
               that believes in personal service. Founded April 1999 as Edwards Parcel Express.

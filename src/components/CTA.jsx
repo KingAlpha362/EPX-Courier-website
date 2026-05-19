@@ -22,7 +22,7 @@ export default function CTA() {
         src={CTA_IMG.background}
         alt=""
         aria-hidden
-        loading="eager"
+        loading="lazy"
         
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
       />

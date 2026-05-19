@@ -25,7 +25,7 @@ export default function ImageGallery() {
                     <div className="relative overflow-hidden group row-span-2 rounded-[2px]">
                         <img 
                             src={bentoItems[0].src} 
-                            loading="eager"
+                            loading="lazy"
                             
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                             alt="" 
@@ -40,7 +40,7 @@ export default function ImageGallery() {
                     <div className="relative overflow-hidden group aspect-square rounded-[2px]">
                         <img 
                             src={bentoItems[1].src} 
-                            loading="eager"
+                            loading="lazy"
                             
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                             alt="" 
@@ -55,7 +55,7 @@ export default function ImageGallery() {
                     <div className="relative overflow-hidden group aspect-square rounded-[2px]">
                         <img 
                             src={bentoItems[2].src} 
-                            loading="eager"
+                            loading="lazy"
                             
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                             alt="" 
@@ -70,7 +70,7 @@ export default function ImageGallery() {
                     <div className="hidden lg:block relative overflow-hidden group row-span-2 rounded-[2px]">
                         <img 
                             src={bentoItems[3].src} 
-                            loading="eager"
+                            loading="lazy"
                             
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                             alt="" 
@@ -85,7 +85,7 @@ export default function ImageGallery() {
                     <div className="hidden lg:block relative overflow-hidden group rounded-[2px]">
                         <img 
                             src={bentoItems[4].src} 
-                            loading="eager"
+                            loading="lazy"
                             
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                             alt="" 

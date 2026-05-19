@@ -23,7 +23,7 @@ export default function Why() {
                                 alt="EPX Team"
                                 width={960}
                                 height={640}
-                                loading="eager"
+                                loading="lazy"
                                 
                                 className="w-full h-full object-cover"
                             />

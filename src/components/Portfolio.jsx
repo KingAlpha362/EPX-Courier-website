@@ -30,7 +30,7 @@ export default function Portfolio() {
                                 alt={project.title}
                                 width={600}
                                 height={480}
-                                loading="eager"
+                                loading="lazy"
                                 
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
