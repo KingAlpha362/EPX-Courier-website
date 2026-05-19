@@ -76,7 +76,7 @@ export default function Hero() {
         </picture>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 md:px-8 pt-28 pb-32 md:pb-36 relative z-20">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 md:px-8 pt-24 pb-20 md:pt-28 md:pb-36 relative z-20">
         <div className="flex flex-col items-center max-w-4xl">
           <div className="hero-animate-up inline-flex items-center gap-3 mb-8">
             <div className="w-8 h-[2px] bg-accent-red" />
@@ -85,7 +85,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="hero-title font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-8 md:mb-6 leading-[0.95] tracking-[-0.02em] text-center"
+            className="hero-title font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-8 md:mb-6 leading-[0.95] tracking-[-0.02em] text-center"
             data-splitting
           >
             Think Big.

@@ -17,7 +17,7 @@ const trustBadges = [
 
 export default function CTA() {
   return (
-    <section className="bg-primary-dark relative overflow-hidden py-24">
+    <section className="bg-primary-dark relative overflow-hidden py-16 md:py-24">
       <img
         src={CTA_IMG.background}
         alt=""
@@ -30,7 +30,7 @@ export default function CTA() {
 
       <div className="max-w-[1200px] mx-auto px-4 text-center relative z-10">
         <span className="label-caps text-accent-red mb-4 block reveal">Ready to start?</span>
-        <h2 className="reveal font-display text-5xl md:text-[72px] font-black text-white mb-6 leading-[0.95] uppercase">
+        <h2 className="reveal font-display text-4xl md:text-[72px] font-black text-white mb-6 leading-[0.95] uppercase">
           Let&apos;s Work <span className="text-accent-red">Together.</span>
         </h2>
         <p className="text-lg text-white/50 mb-6 max-w-2xl mx-auto leading-relaxed font-inter">

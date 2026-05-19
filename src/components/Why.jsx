@@ -65,7 +65,7 @@ export default function Why() {
                             to a national express network with owner-managed reliability, proven tracking technology, and teams who understand your business.
                         </p>
 
-                        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-x-8 md:gap-y-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8 sm:gap-y-10">
                             {whyFeatures.map((feat) => {
                                 const Icon = LOGISTICS_ICONS[feat.icon];
                                 return (

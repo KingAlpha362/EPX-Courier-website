@@ -73,7 +73,7 @@ export default function Features() {
                     <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary">Precision Logistics. <br/><span className="text-accent-red">At Scale.</span></h2>
                 </div>
 
-                <div className="flex flex-col gap-20 md:gap-32">
+                <div className="flex flex-col gap-12 md:gap-32">
                     {featureStories.map((story, idx) => (
                         <div
                             key={idx}
@@ -91,7 +91,7 @@ export default function Features() {
                                 />
                             </div>
 
-                            <div className="feature-card__body w-full md:w-1/2 flex flex-col justify-center border-l-4 border-accent-red pl-8 md:pl-12">
+                            <div className="feature-card__body w-full md:w-1/2 flex flex-col justify-center border-l-4 border-accent-red pl-4 md:pl-12">
                                 <span className="label-caps text-accent-red mb-4 block font-bold text-xs tracking-[0.2em]">
                                     {story.subtitle}
                                 </span>
