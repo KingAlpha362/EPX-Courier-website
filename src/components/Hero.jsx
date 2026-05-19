@@ -71,7 +71,7 @@ export default function Hero() {
             height={1080}
             fetchPriority="high"
             decoding="async"
-            className="hero-bg-img w-full h-full object-cover object-[25%_center] md:object-right"
+            className="hero-bg-img w-full h-full object-cover object-center"
           />
         </picture>
       </div>
