@@ -46,7 +46,7 @@ export default function Header() {
                         alt="EPX Logo" 
                         width={180}
                         height={56}
-                        decoding="async"
+                        
                         className={cn("h-12 w-auto transition-all", { "h-10": scrolled })} 
                     />
                 </a>

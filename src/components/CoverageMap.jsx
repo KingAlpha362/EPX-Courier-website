@@ -83,8 +83,8 @@ export default function CoverageMap() {
             alt="South Africa coverage map outline"
             width={800}
             height={600}
-            loading="lazy"
-            decoding="async"
+            loading="eager"
+            
             className="absolute inset-0 w-full h-full object-contain"
           />
 

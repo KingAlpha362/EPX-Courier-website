@@ -49,8 +49,8 @@ export default function Features() {
                                     alt={story.title}
                                     width={960}
                                     height={600}
-                                    loading="lazy"
-                                    decoding="async"
+                                    loading="eager"
+                                    
                                     className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                                 />
                             </div>

@@ -22,8 +22,8 @@ export default function CTA() {
         src={CTA_IMG.background}
         alt=""
         aria-hidden
-        loading="lazy"
-        decoding="async"
+        loading="eager"
+        
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
       />
       <div className="absolute inset-0 bg-texture opacity-5 pointer-events-none" />

@@ -24,7 +24,7 @@ export function BrandLogo({ variant = 'dark', className, ...props }) {
       alt="E.P.X. Courier Services"
       width={200}
       height={48}
-      decoding="async"
+      
       onError={handleError}
       className={cn('h-12 w-auto max-w-[220px] object-contain object-left', className)}
       {...props}

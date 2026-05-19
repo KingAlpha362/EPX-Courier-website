@@ -11,8 +11,8 @@ export function Flaticon({ icon, className, alt = '' }) {
       alt={alt}
       width={24}
       height={24}
-      loading="lazy"
-      decoding="async"
+      loading="eager"
+      
       className={cn('flaticon-icon object-contain shrink-0', className)}
     />
   );

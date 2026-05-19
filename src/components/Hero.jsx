@@ -27,7 +27,7 @@ export default function Hero() {
             width={1920}
             height={1080}
             fetchPriority="high"
-            decoding="async"
+            
             className="hero-bg-img w-full h-full object-cover object-center"
           />
         </picture>
