@@ -1,18 +1,6 @@
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { Flaticon } from '@/components/ui/Flaticon';
 
-function SaFlagBadge() {
-  return (
-    <svg width="18" height="12" viewBox="0 0 18 12" className="inline-block flex-shrink-0" aria-hidden>
-      <rect width="18" height="12" fill="#007A4D" />
-      <path d="M0 0 L18 12 M18 0 L0 12" stroke="#FFB81C" strokeWidth="2" />
-      <path d="M0 0 L18 12 M18 0 L0 12" stroke="#000" strokeWidth="0.8" />
-      <path d="M0 6 H18 M9 0 V12" stroke="#FFF" strokeWidth="1.2" />
-      <path d="M0 6 H18" stroke="#CE1126" strokeWidth="0.6" />
-    </svg>
-  );
-}
-
 const socialLinks = [
   { label: 'Facebook', href: '#', icon: 'deliveryService' },
   { label: 'LinkedIn', href: '#', icon: 'courier' },
@@ -28,12 +16,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="flex flex-col items-start gap-5">
             <BrandLogo variant="dark" className="h-14" loading="lazy" />
-            <div className="flex items-center gap-2">
-              <SaFlagBadge />
-              <span className="text-[10px] font-inter font-semibold uppercase tracking-[0.12em] text-white/50">
-                Proudly South African
-              </span>
-            </div>
             <p className="text-[#94A3B8] text-sm font-inter leading-relaxed max-w-xs">
               National express courier with an exceptional footprint across South Africa — our own fleet, world-class tracking, and a management team
               that believes in personal service. Founded April 1999 as Edwards Parcel Express.

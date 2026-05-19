@@ -53,7 +53,8 @@ export default function Hero() {
       ref={heroRef}
       className="hero-section relative min-h-screen flex items-center overflow-hidden bg-primary-dark noise-overlay border-b-[3px] border-brand-gold"
     >
-      <div className="absolute inset-0 z-0 hero-split-overlay">
+      <div className="absolute top-0 left-0 w-full h-[55vh] md:h-full z-0 bg-primary-dark overflow-hidden">
+        <div className="absolute inset-0 hero-split-overlay z-10 pointer-events-none" />
         <picture>
           <source
             media="(max-width: 768px)"

@@ -8,20 +8,24 @@ import App from './App.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-  smoothTouch: false,
-  touchMultiplier: 2,
-})
+// Disable smooth scroll on touch/mobile devices for native performance
+const isTouchOrMobile = typeof window !== 'undefined' && 
+  (window.innerWidth < 768 || 'ontouchstart' in window || navigator.maxTouchPoints > 0);
 
-lenis.on('scroll', ScrollTrigger.update)
+if (!isTouchOrMobile) {
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  })
 
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000)
-})
-gsap.ticker.lagSmoothing(0)
+  lenis.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+  gsap.ticker.lagSmoothing(0)
+}
 
 const onResize = () => ScrollTrigger.refresh()
 window.addEventListener('resize', onResize)
