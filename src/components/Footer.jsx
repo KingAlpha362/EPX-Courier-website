@@ -1,18 +1,6 @@
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { Flaticon } from '@/components/ui/Flaticon';
 
-function SaFlagBadge() {
-  return (
-    <svg width="18" height="12" viewBox="0 0 18 12" className="inline-block flex-shrink-0" aria-hidden>
-      <rect width="18" height="12" fill="#007A4D" />
-      <path d="M0 0 L18 12 M18 0 L0 12" stroke="#FFB81C" strokeWidth="2" />
-      <path d="M0 0 L18 12 M18 0 L0 12" stroke="#000" strokeWidth="0.8" />
-      <path d="M0 6 H18 M9 0 V12" stroke="#FFF" strokeWidth="1.2" />
-      <path d="M0 6 H18" stroke="#CE1126" strokeWidth="0.6" />
-    </svg>
-  );
-}
-
 const socialLinks = [
   { label: 'Facebook', href: '#', icon: 'deliveryService' },
   { label: 'LinkedIn', href: '#', icon: 'courier' },
@@ -27,26 +15,20 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 pt-14 pb-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="flex flex-col items-start gap-5">
-            <BrandLogo variant="dark" className="h-14" loading="lazy" />
-            <div className="flex items-center gap-2">
-              <SaFlagBadge />
-              <span className="text-[10px] font-inter font-semibold uppercase tracking-[0.12em] text-white/50">
-                Proudly South African
-              </span>
-            </div>
+            <BrandLogo variant="dark" className="h-14" loading="eager" />
             <p className="text-[#94A3B8] text-sm font-inter leading-relaxed max-w-xs">
               National express courier with an exceptional footprint across South Africa — our own fleet, world-class tracking, and a management team
               that believes in personal service. Founded April 1999 as Edwards Parcel Express.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-7 h-7 border border-white/20 rounded-[3px] flex items-center justify-center p-1 hover:bg-accent-red hover:border-accent-red transition-colors duration-200"
+                  className="w-11 h-11 border border-white/20 rounded-[3px] flex items-center justify-center p-2.5 hover:bg-accent-red hover:border-accent-red transition-colors duration-200"
                 >
-                  <Flaticon icon={s.icon} className="w-4 h-4 opacity-90" alt="" />
+                  <Flaticon icon={s.icon} className="w-5 h-5 opacity-90" alt="" />
                 </a>
               ))}
             </div>
@@ -54,23 +36,23 @@ export default function Footer() {
 
           <div>
             <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-5">Services</h5>
-            <div className="flex flex-col gap-4 text-[#94A3B8] text-sm font-inter">
-              <a href="#features" className="hover:text-white transition-colors">Same-Day Express</a>
-              <a href="#features" className="hover:text-white transition-colors">Overnight Delivery</a>
-              <a href="#solutions" className="hover:text-white transition-colors">Bulk Freight</a>
-              <a href="#features" className="hover:text-white transition-colors">Warehouse & Hub</a>
-              <a href="#portfolio" className="hover:text-white transition-colors">Managed Logistics</a>
+            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm font-inter">
+              <a href="#features" className="hover:text-white transition-colors py-2">Same-Day Express</a>
+              <a href="#features" className="hover:text-white transition-colors py-2">Overnight Delivery</a>
+              <a href="#solutions" className="hover:text-white transition-colors py-2">Bulk Freight</a>
+              <a href="#features" className="hover:text-white transition-colors py-2">Warehouse & Hub</a>
+              <a href="#portfolio" className="hover:text-white transition-colors py-2">Managed Logistics</a>
             </div>
           </div>
 
           <div>
             <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-8">Quick Links</h5>
-            <div className="flex flex-col gap-4 text-[#94A3B8] text-sm font-inter">
-              <a href="https://epx.pperfect.com/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Track Your Parcel</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Get a Quote</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Search Branch</a>
-              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors" target="_blank" rel="noreferrer">Client Portal</a>
-              <a href="#why" className="hover:text-white transition-colors">Our Story</a>
+            <div className="flex flex-col gap-2 text-[#94A3B8] text-sm font-inter">
+              <a href="https://epx.pperfect.com/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Track Your Parcel</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Get a Quote</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Search Branch</a>
+              <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Client Portal</a>
+              <a href="#why" className="hover:text-white transition-colors py-2">Our Story</a>
             </div>
           </div>
 

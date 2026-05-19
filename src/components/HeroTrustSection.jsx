@@ -48,16 +48,25 @@ export default function HeroTrustSection() {
                 ref={statsRef}
                 className="w-full border-t-[3px] border-accent-red bg-primary-dark"
             >
-                <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.08]">
-                    {stats.map((stat) => (
-                        <div key={stat.id} className="py-8 md:py-10 px-4 md:px-8 text-center md:text-left">
+                <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/[0.08]">
+                    {stats.map((stat, idx) => (
+                        <div 
+                            key={stat.id} 
+                            className={cn(
+                                "py-8 md:py-10 px-4 md:px-8 text-center md:text-left border-white/[0.08]",
+                                {
+                                    "border-b md:border-b-0": idx < 2,
+                                    "border-r md:border-r-0": idx % 2 === 0
+                                }
+                            )}
+                        >
                             <span
                                 id={stat.id}
-                                className="block text-[40px] md:text-[64px] font-barlow font-black text-white leading-none tracking-tight"
+                                className="block text-5xl md:text-[64px] font-barlow font-black text-white leading-none tracking-tight"
                             >
                                 0
                             </span>
-                            <span className="mt-2 block text-xs font-inter font-semibold text-white/45 uppercase tracking-[0.15em]">
+                            <span className="mt-2 block text-[10px] md:text-xs font-inter font-semibold text-white/45 uppercase tracking-[0.15em]">
                                 {stat.label}
                             </span>
                         </div>

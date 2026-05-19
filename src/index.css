@@ -18,12 +18,18 @@
     color: var(--text-primary);
     background-color: var(--surface-white);
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 15px; /* Mobile target */
     font-weight: 400;
     line-height: 1.65;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  @media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
   }
   
   section {
@@ -31,7 +37,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
   }
 
   main > section:not(.hero-section) {
@@ -156,6 +161,7 @@
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border-radius: 4px;
+    width: 100%;
   }
 
   .feature-img-wrap::after {
@@ -182,28 +188,29 @@
     z-index: 1;
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-  }
 
   .animate-hub-pulse {
     transform-origin: center;
     transform-box: fill-box;
+  }
+
+  /* Flaticon color correction: default to black, invert to white on dark backgrounds */
+  .flaticon-icon {
+    filter: brightness(0);
+  }
+
+  .bg-primary-dark .flaticon-icon,
+  [class*="bg-primary-dark"] .flaticon-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Explicit color overrides */
+  .flaticon-white {
+    filter: brightness(0) invert(1) !important;
+  }
+
+  .flaticon-black {
+    filter: brightness(0) !important;
   }
 }
 
@@ -229,11 +236,21 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to left, rgba(10, 14, 26, 0.97) 0%, rgba(10, 14, 26, 0.5) 60%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(10, 14, 26, 0) 0%, rgba(10, 14, 26, 0.4) 60%, #0A0E1A 100%);
     pointer-events: none;
     z-index: 10;
   }
 
+  @media (min-width: 768px) {
+    .hero-split-overlay::after {
+      background: linear-gradient(to right, rgba(10, 14, 26, 0.92) 0%, rgba(10, 14, 26, 0.6) 50%, rgba(10, 14, 26, 0.2) 100%);
+    }
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

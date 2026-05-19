@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
@@ -45,7 +46,7 @@ export default function Header() {
                         alt="EPX Logo" 
                         width={180}
                         height={56}
-                        decoding="async"
+                        
                         className={cn("h-12 w-auto transition-all", { "h-10": scrolled })} 
                     />
                 </a>
@@ -71,36 +72,47 @@ export default function Header() {
                     size="icon" 
                     variant="outline" 
                     onClick={() => setOpen(!open)} 
-                    className={cn("md:hidden transition-all border-white/20 text-white hover:bg-white/10")}
+                    className={cn("md:hidden flex items-center justify-center h-12 w-12 transition-all border-white/20 text-white hover:bg-white/10")}
                 >
-					<MenuToggleIcon open={open} className="size-5" duration={300} />
+					<MenuToggleIcon open={open} className="size-6" duration={300} />
 				</Button>
 			</nav>
 
 			<div
 				className={cn(
-					'bg-primary-dark fixed top-20 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-white/5 md:hidden transition-all duration-300',
-					open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+					'bg-primary-dark/98 backdrop-blur-xl fixed inset-0 z-[60] flex flex-col md:hidden transition-all duration-500 ease-in-out',
+					open ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
 				)}
 			>
-				<div className="flex h-full w-full flex-col justify-between gap-y-2 p-6">
-					<div className="grid gap-y-2">
-						{links.map((link) => (
+                <div className="flex items-center justify-between h-20 px-4 border-b border-white/5">
+                    <img src={BRAND.logoFooter} alt="EPX Logo" className="h-10 w-auto" />
+                    <Button 
+                        size="icon" 
+                        variant="ghost" 
+                        onClick={() => setOpen(false)} 
+                        className="text-white hover:bg-white/10"
+                    >
+                        <MenuToggleIcon open={open} className="size-6" duration={300} />
+                    </Button>
+                </div>
+				<div className="flex flex-col justify-between h-[calc(100vh-80px)] p-8">
+					<div className="flex flex-col gap-y-4">
+						{links.map((link, i) => (
 							<a
 								key={link.label}
-								className={buttonVariants({
-									variant: 'ghost',
-									className: 'justify-start text-lg h-14 font-inter font-bold text-white',
-								})}
+								className="text-3xl font-display font-black text-white hover:text-accent-red transition-colors py-2"
 								href={link.href}
                                 onClick={() => setOpen(false)}
+                                style={{ transitionDelay: `${i * 50}ms` }}
 							>
 								{link.label}
 							</a>
 						))}
 					</div>
-					<div className="flex flex-col gap-3 pb-10">
-						<Button className="w-full h-14 text-base bg-accent-red hover:bg-[#b00217] text-white rounded-[4px] font-bold">Get a Quote</Button>
+					<div className="flex flex-col gap-4 pb-8">
+						<Button className="w-full h-16 text-lg bg-accent-red hover:bg-[#b00217] text-white rounded-[4px] font-bold uppercase tracking-widest">
+                            Get a Quote
+                        </Button>
 					</div>
 				</div>
 			</div>

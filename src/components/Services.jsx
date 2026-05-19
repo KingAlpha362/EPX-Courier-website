@@ -1,103 +1,103 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState } from 'react';
 import { SERVICES } from '@/constants/images';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Flaticon } from '@/components/ui/Flaticon';
+import { cn } from '@/lib/utils';
 
 const services = [
     {
         tag: "Branch Network",
         title: "Over-the-Counter Drops",
-        desc: "Drop off or collect from any one of our conveniently located branches and service points across the country.",
+        desc: "Drop off or collect from any one of our conveniently located branches across the country.",
         image: SERVICES.parcelDelivery,
+        icon: "packageDelivery",
         linkText: "Find a Branch"
     },
     {
         tag: "Bulk Freight",
         title: "Pallet & Volume Freight",
-        desc: "High-volume, palletised freight between major centres with competitive rates and dedicated account management.",
+        desc: "High-volume, palletised freight between major centres with competitive rates and dedicated management.",
         image: SERVICES.bulkFreight,
+        icon: "deliveryTruck",
         linkText: "Learn More"
     },
     {
         tag: "Hub Ops",
         title: "Sortation & Distribution",
-        desc: "State-of-the-art hub operations with advanced sortation technology ensure accurate, rapid processing.",
+        desc: "State-of-the-art hub operations with advanced sortation technology ensure accurate processing.",
         image: SERVICES.operationsHub,
+        icon: "loading",
         linkText: "Our Network"
+    },
+    {
+        tag: "Managed Logistics",
+        title: "Enterprise Fleet Ops",
+        desc: "Custom fleet management solutions for large enterprises requiring scale and precision.",
+        image: SERVICES.managedFleet || SERVICES.bulkFreight,
+        icon: "courier",
+        linkText: "Custom Quote"
     }
 ];
 
 export default function Services() {
     const sectionRef = useRef(null);
+    const scrollRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".services-header", {
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".services-header",
-                    start: "top 85%"
-                }
-            });
 
-            gsap.from(".service-card", {
-                scrollTrigger: {
-                    trigger: ".service-grid",
-                    start: "top 85%",
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out"
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
+
+    const handleScroll = () => {
+        if (!scrollRef.current) return;
+        const width = scrollRef.current.offsetWidth;
+        const scrollLeft = scrollRef.current.scrollLeft;
+        const index = Math.round(scrollLeft / (width * 0.8));
+        setActiveIndex(index);
+    };
 
     return (
-        <section ref={sectionRef} className="bg-surface-light overflow-hidden" id="solutions">
+        <section className="bg-surface-light overflow-hidden py-20" id="solutions">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-                <div className="services-header reveal mb-10">
-                    <span className="label-caps text-accent-red mb-2 block">Our Solutions</span>
-                    <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary leading-tight">
-                        Every Delivery Need. <br/><span className="text-accent-red">Covered.</span>
+                <div className="mb-12 text-center md:text-left">
+                    <span className="label-caps text-accent-red mb-2 block font-semibold tracking-widest text-xs">Our Solutions</span>
+                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[0.95] tracking-tight uppercase">
+                        Every Delivery Need. <br /><span className="text-accent-red">Covered.</span>
                     </h2>
                 </div>
 
-                <div className="service-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div 
+                    ref={scrollRef}
+                    onScroll={handleScroll}
+                    className="flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 -mx-4 px-4 md:mx-0 md:px-0"
+                >
                     {services.map((service, idx) => (
-                        <a
+                        <div
                             key={idx}
-                            href="#"
-                            className="service-card group relative block h-[420px] rounded-[6px] overflow-hidden transition-transform duration-500 hover:scale-[1.02]"
+                            className="snap-start shrink-0 w-[85vw] md:w-auto flex flex-col items-start p-8 bg-white rounded-[2px] border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
                         >
-                            <img
-                                src={service.image}
-                                alt={service.title}
-                                width={600}
-                                height={420}
-                                loading="lazy"
-                                decoding="async"
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,14,26,0.92)] via-[rgba(10,14,26,0.4)] to-transparent transition-opacity duration-300 group-hover:from-[rgba(10,14,26,0.97)]" />
-                            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                                <span className="inline-block bg-accent-red text-white label-caps px-2.5 py-1 rounded-[2px] mb-3" style={{ fontSize: '10px', letterSpacing: '0.15em' }}>
-                                    {service.tag}
-                                </span>
-                                <h4 className="font-display text-2xl font-bold text-white mb-2 uppercase">{service.title}</h4>
-                                <p className="text-white/70 font-inter text-sm leading-relaxed mb-4 line-clamp-2">{service.desc}</p>
-                                <span className="text-white font-inter font-semibold text-xs uppercase tracking-wider">
-                                    {service.linkText} →
-                                </span>
+                            <div className="mb-6 bg-gray-50 p-4 rounded-full">
+                                <Flaticon icon={service.icon} className="w-10 h-10" />
                             </div>
-                        </a>
+                            <span className="label-caps text-accent-red mb-2 block text-[10px] font-bold">
+                                {service.tag}
+                            </span>
+                            <h4 className="font-display text-2xl font-black text-text-primary mb-3 uppercase leading-tight">{service.title}</h4>
+                            <p className="text-text-primary/60 font-inter text-sm leading-relaxed mb-6 flex-grow">{service.desc}</p>
+                            <a href="#" className="text-accent-red font-inter font-bold text-xs uppercase tracking-widest border-b-2 border-accent-red pb-1 hover:text-[#b80018] hover:border-[#b80018] transition-all">
+                                {service.linkText} →
+                            </a>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Mobile Pagination Dots */}
+                <div className="flex md:hidden justify-center gap-2 mt-8">
+                    {services.map((_, i) => (
+                        <div 
+                            key={i} 
+                            className={cn(
+                                "w-2 h-2 rounded-full transition-all duration-300",
+                                activeIndex === i ? "bg-accent-red w-4" : "bg-gray-200"
+                            )} 
+                        />
                     ))}
                 </div>
             </div>

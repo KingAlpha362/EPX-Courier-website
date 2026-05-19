@@ -1,11 +1,5 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { WHY } from '@/constants/images';
+import { GALLERY } from '@/constants/images';
 import { LOGISTICS_ICONS } from '@/components/icons/LogisticsIcons';
-
-gsap.registerPlugin(ScrollTrigger);
-
 const whyFeatures = [
     { icon: 'nationwide', title: "Nationwide Reach", desc: "Door-to-door coverage across all 9 provinces." },
     { icon: 'tracking', title: "Real-Time Visibility", desc: "Advanced barcoded tracking for every parcel." },
@@ -14,50 +8,32 @@ const whyFeatures = [
 ];
 
 export default function Why() {
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from('.why-animate', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 80%',
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: 'power2.out',
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
+    const storyImage = GALLERY[1].src; // Team/Human element
 
     return (
-        <section ref={sectionRef} className="bg-primary-dark overflow-hidden" id="why">
+        <section className="bg-primary-dark overflow-hidden" id="why">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 items-start">
-                    <div className="lg:w-1/2 w-full lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] min-h-[400px] mb-10 lg:mb-0">
+                    <div className="lg:w-1/2 w-full relative lg:sticky lg:top-20 lg:self-start h-auto aspect-video lg:h-[calc(100vh-5rem)] mb-10 lg:mb-0">
                         <div
-                            className="relative w-full h-full min-h-[400px] overflow-hidden"
-                            style={{ clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0 100%)' }}
+                            className="relative w-full h-full overflow-hidden rounded-[2px]"
                         >
                             <img
-                                src={WHY.freightTruck}
-                                alt="EPX Fleet"
+                                src={storyImage}
+                                alt="EPX Team"
                                 width={960}
                                 height={640}
-                                loading="lazy"
-                                decoding="async"
-                                className="absolute inset-0 w-full h-full object-cover"
+                                loading="eager"
+                                
+                                className="w-full h-full object-cover"
                             />
                         </div>
                     </div>
 
-                    <div className="lg:w-1/2 why-animate">
-                        <span className="label-caps text-accent-red mb-4 block">Why Partner With E.P.X?</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight text-balance max-w-xl">
-                            A Polished Evolution<br />of <span className="text-accent-red">Precision Logistics.</span>
+                    <div className="lg:w-1/2">
+                        <span className="label-caps text-accent-red mb-4 block">Our Story</span>
+                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-[0.95] text-balance max-w-xl">
+                            A POLISHED <br className="md:hidden" /> EVOLUTION <br /> <span className="text-accent-red">OF LOGISTICS.</span>
                         </h2>
                         <p className="text-lg text-white/70 font-inter mb-12 leading-relaxed">
                             Brothers James and Garreth Edwards founded Edwards Parcel Express in April 1999, starting with an overnight express
@@ -65,7 +41,7 @@ export default function Why() {
                             to a national express network with owner-managed reliability, proven tracking technology, and teams who understand your business.
                         </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8 sm:gap-y-10">
                             {whyFeatures.map((feat) => {
                                 const Icon = LOGISTICS_ICONS[feat.icon];
                                 return (

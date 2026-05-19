@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/ui/Header2';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import Header from './components/Header';
 import Hero from './components/Hero';
 import HeroTrustSection from './components/HeroTrustSection';
 import Features from './components/Features';
@@ -11,25 +13,24 @@ import Why from './components/Why';
 import Portfolio from './components/Portfolio';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import PageLoader from './components/PageLoader';
 import CustomCursor from './components/CustomCursor';
-import { useSectionReveal } from './hooks/useSectionReveal';
+
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 
 function AppContent() {
-  useSectionReveal();
-
   return (
     <>
       <Header />
       <main>
         <Hero />
-        <HeroTrustSection />
-        <Features />
+        <Why />
         <Services />
         <ImageGallery />
+        <Features />
         <CoverageMap />
-        <Why />
-        <Portfolio />
+        <Testimonials />
+        <FAQ />
         <CTA />
       </main>
       <Footer />
@@ -38,13 +39,11 @@ function AppContent() {
 }
 
 function App() {
-  const [ready, setReady] = useState(false);
-
   return (
     <>
-      <PageLoader onComplete={() => setReady(true)} />
       <CustomCursor />
       {ready && <AppContent />}
+      <AppContent />
       <SpeedInsights />
     </>
   );

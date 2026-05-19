@@ -1,4 +1,4 @@
-import { HERO } from '@/constants/images';
+import { CTA_IMG } from '@/constants/images';
 import { Flaticon } from '@/components/ui/Flaticon';
 
 function PhoneIcon() {
@@ -17,18 +17,20 @@ const trustBadges = [
 
 export default function CTA() {
   return (
-    <section className="bg-primary-dark relative overflow-hidden">
+    <section className="bg-primary-dark relative overflow-hidden py-16 md:py-24">
       <img
-        src={HERO.background}
+        src={CTA_IMG.background}
         alt=""
         aria-hidden
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.12] grayscale pointer-events-none"
+        loading="eager"
+        
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
       />
       <div className="absolute inset-0 bg-texture opacity-5 pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto px-4 text-center relative z-10">
         <span className="label-caps text-accent-red mb-4 block reveal">Ready to start?</span>
-        <h2 className="reveal font-display text-5xl md:text-[72px] font-black text-white mb-6 leading-[0.95] uppercase">
+        <h2 className="reveal font-display text-4xl md:text-[72px] font-black text-white mb-6 leading-[0.95] uppercase">
           Let&apos;s Work <span className="text-accent-red">Together.</span>
         </h2>
         <p className="text-lg text-white/50 mb-6 max-w-2xl mx-auto leading-relaxed font-inter">
