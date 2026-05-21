@@ -4,15 +4,15 @@ test('has title', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/EPX Couriers/);
+  await expect(page).toHaveTitle(/E\.P\.X\. Courier Services/);
 });
 
-test('get started link', async ({ page }) => {
+test('page loads successfully', async ({ page }) => {
   await page.goto('http://localhost:5173/');
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  // Check that the main content is visible
+  await expect(page.locator('main')).toBeVisible();
+  
+  // Check for header element
+  await expect(page.locator('header')).toBeVisible();
 });
