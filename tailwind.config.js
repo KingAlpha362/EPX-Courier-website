@@ -29,8 +29,10 @@ export default {
         }
       },
       fontFamily: {
-        barlow: ["'Barlow Condensed'", "sans-serif"],
-        display: ['"Barlow Condensed"', 'sans-serif'],
+        display: ['"Exo 2"', 'sans-serif'],
+        exo: ['"Exo 2"', 'sans-serif'],
+        poppins: ['"Exo 2"', 'sans-serif'],
+        barlow: ['"Exo 2"', 'sans-serif'],
         inter: ["Inter", "sans-serif"],
         body: ['Inter', 'sans-serif'],
       },
@@ -42,6 +44,7 @@ export default {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
         'hub-pulse': 'hubPulse 2s ease-out infinite',
         'draw-route': 'drawRoute 3s ease-out forwards',
+        'marquee': 'marquee 35s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -55,6 +58,10 @@ export default {
         drawRoute: {
           '0%': { strokeDashoffset: '200' },
           '100%': { strokeDashoffset: '0' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       }
     },

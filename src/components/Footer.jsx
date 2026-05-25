@@ -1,10 +1,37 @@
 import { BrandLogo } from '@/components/ui/BrandLogo';
-import { Flaticon } from '@/components/ui/Flaticon';
+
+function FacebookIcon() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
 
 const socialLinks = [
-  { label: 'Facebook', href: '#', icon: 'deliveryService' },
-  { label: 'LinkedIn', href: '#', icon: 'courier' },
-  { label: 'Instagram', href: '#', icon: 'expressDelivery' },
+  { label: 'Facebook', href: 'https://www.facebook.com/epxcourierservices', Icon: FacebookIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/epx-courier-services', Icon: LinkedInIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/epxcourier', Icon: InstagramIcon },
 ];
 
 export default function Footer() {
@@ -20,15 +47,17 @@ export default function Footer() {
               National express courier with an exceptional footprint across South Africa — our own fleet, world-class tracking, and a management team
               that believes in personal service. Founded April 1999 as Edwards Parcel Express.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-11 h-11 border border-white/20 rounded-[3px] flex items-center justify-center p-2.5 hover:bg-accent-red hover:border-accent-red transition-colors duration-200"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 border border-white/20 rounded-[3px] flex items-center justify-center text-white/60 hover:bg-accent-red hover:border-accent-red hover:text-white transition-colors duration-200 active:scale-[0.97]"
                 >
-                  <Flaticon icon={s.icon} className="w-5 h-5 opacity-90" alt="" />
+                  <s.Icon />
                 </a>
               ))}
             </div>
@@ -78,14 +107,14 @@ export default function Footer() {
 
       <div className="bg-black/30 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-inter text-[#64748B]">
-          <span>© 2025 E.P.X. Courier Services. All rights reserved.</span>
+          <span>© 2026 E.P.X. Courier Services. All rights reserved.</span>
           <div className="flex flex-wrap gap-6 items-center justify-center">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-white transition-colors">POPIA</a>
           </div>
           <span className="text-white/40 uppercase tracking-widest text-[10px]">
-            Built by the E.P.X. digital team
+            Designed for E.P.X. Courier Services
           </span>
         </div>
       </div>

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "motion/react";
 
@@ -41,8 +39,8 @@ export const TestimonialsCarousel = ({
           <motion.div
             key={index}
             whileHover={{ scale: 1.02, rotate: 0.5 }}
-            className={`bg-white dark:bg-black my-3 border border-gray-100 shadow-sm rounded-2xl p-6 flex-shrink-0 w-[350px] flex flex-col justify-between`}
-            style={{ height: cardHeight }}
+            className={`bg-white dark:bg-black my-3 border border-gray-100 shadow-sm rounded-2xl p-4 md:p-6 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] flex flex-col justify-between`}
+            style={{ minHeight: cardHeight }}
           >
             <div>
               <div className="flex gap-1 text-[#FBBC05] text-[10px] mb-3">

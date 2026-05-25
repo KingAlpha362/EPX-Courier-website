@@ -13,14 +13,15 @@ export const BRAND = {
 }
 
 export const HERO = {
-  background: `${base}/gallery/depot-operations.webp`,
-  backgroundMobile: `${base}/gallery/depot-operations.webp`,
+  background: `${base}/hero/hero-fleet.webp`,
+  backgroundMobile: `${base}/hero/hero-fleet-mobile.webp`,
 }
 
 export const SERVICES = {
   parcelDelivery: `${base}/services/parcel-delivery.webp`,
   bulkFreight: `${base}/services/bulk-freight.webp`,
   operationsHub: `${base}/services/operations-hub.webp`,
+  managedFleet: `${base}/gallery/hub-excellence.webp`,
 }
 
 export const FEATURES = {
@@ -31,20 +32,24 @@ export const FEATURES = {
 }
 
 export const WHY = {
+  storyImage: `${base}/gallery/team-collaboration.webp`,
   freightTruck: `${base}/why/freight-truck.webp`,
 }
+
+export const SA_MAP = `${base}/coverage/south-africa-map.png`
 
 export const PORTFOLIO = {
   case13: `${base}/portfolio/case-13.webp`,
   case115: `${base}/portfolio/case-115.webp`,
   operations11: `${base}/portfolio/operations-11.webp`,
+  hubExcellence: `${base}/gallery/hub-excellence.webp`,
 }
 
 export const GALLERY = [
-  { src: `${base}/hero/hero-fleet.webp`, label: 'Depot Operations', caption: 'FLEET OPS', aspect: 'portrait' },
+  { src: `${base}/gallery/depot-operations.webp`, label: 'Depot Operations', caption: 'FLEET OPS', aspect: 'portrait' },
   { src: `${base}/gallery/team-collaboration.webp`, label: 'Team Collaboration', caption: 'LAST-MILE', aspect: 'portrait' },
   { src: `${base}/gallery/sorting-center.webp`, label: 'Sorting Center', caption: 'SORTATION', aspect: 'landscape' },
-  { src: `${base}/gallery/customer-service.webp`, label: 'Customer Service', caption: 'HUB OPS', aspect: 'portrait' },
+  { src: `${base}/gallery/professional-exchange.webp`, label: 'Professional Service', caption: 'CLIENT CARE', aspect: 'portrait' },
   { src: `${base}/gallery/loading-dock.webp`, label: 'Loading Dock', caption: 'COLLECTION', aspect: 'portrait' },
 ]
 

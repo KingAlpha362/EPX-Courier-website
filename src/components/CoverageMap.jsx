@@ -1,143 +1,113 @@
 import { useEffect, useRef } from 'react';
 import { CountUp } from 'countup.js';
-import { COVERAGE } from '@/constants/images';
-import { COVERAGE_HUBS, COVERAGE_ROUTES } from '@/constants/coverageHubs';
+import { SA_MAP } from '@/constants/images';
 
-function HubPulse({ x, y, delay }) {
-  return (
-    <g transform={`translate(${x}, ${y})`}>
-      <circle r="4" fill="#E8001D" />
-      <circle
-        r="4"
-        fill="none"
-        stroke="#E8001D"
-        strokeWidth="2"
-        opacity="0.9"
-      >
-        <animate
-          attributeName="r"
-          values="4;12;4"
-          dur="2s"
-          begin={`${delay}s`}
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.8;0;0.8"
-          dur="2s"
-          begin={`${delay}s`}
-          repeatCount="indefinite"
-        />
-      </circle>
-    </g>
-  );
-}
+const coverageStats = [
+    { id: 'map-stat-provinces', end: 9, suffix: '', label: 'Provinces' },
+    { id: 'map-stat-hubs', end: 40, suffix: '+', label: 'Strategic Hubs' },
+    { id: 'map-stat-towns', end: 2400, suffix: '', label: 'Towns Reached', separator: ',' },
+    { id: 'map-stat-km', end: 1.2, suffix: 'M km²', label: 'Coverage Area', decimals: 1 },
+];
 
 export default function CoverageMap() {
-  const mapRef = useRef(null);
-  const statsAnimated = useRef(false);
+    const statsRef = useRef(null);
+    const statsAnimated = useRef(false);
 
-  useEffect(() => {
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !statsAnimated.current) {
+                        coverageStats.forEach((s) => {
+                            new CountUp(s.id, s.end, {
+                                duration: 2.2,
+                                suffix: s.suffix || '',
+                                separator: s.separator || '',
+                                decimalPlaces: s.decimals || 0,
+                            }).start();
+                        });
+                        statsAnimated.current = true;
+                        observer.disconnect();
+                    }
+                });
+            },
+            { threshold: 0.25 }
+        );
+        if (statsRef.current) observer.observe(statsRef.current);
+        return () => observer.disconnect();
+    }, []);
 
-    const statObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !statsAnimated.current) {
-            new CountUp('map-stat-km', 1.2, { duration: 2, decimalPlaces: 1 }).start();
-            new CountUp('map-stat-towns', 2400, { duration: 2, separator: ',' }).start();
-            new CountUp('map-stat-km-mobile', 1.2, { duration: 2, decimalPlaces: 1 }).start();
-            new CountUp('map-stat-towns-mobile', 2400, { duration: 2, separator: ',' }).start();
-            statsAnimated.current = true;
-            statObserver.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 }
+    return (
+        <section className="bg-primary-dark overflow-hidden noise-overlay" id="coverage">
+            {/* Content sits above the noise-overlay ::after (z-index 1) */}
+            <div className="relative z-[2] max-w-[1200px] mx-auto px-4 md:px-8">
+
+                {/* Header */}
+                <div className="text-center mb-10 md:mb-14 reveal">
+                    <span className="label-caps text-accent-red mb-4 block">Our Coverage</span>
+                    <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Moving South Africa <span className="text-accent-red">Everywhere.</span>
+                    </h2>
+                    <p className="mt-5 text-white/50 max-w-2xl mx-auto font-inter text-base md:text-lg">
+                        Operational across all 9 provinces with 40+ strategic hubs ensuring your cargo
+                        reaches its destination with surgical precision.
+                    </p>
+                </div>
+
+                {/* Map + stats layout */}
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
+
+                    {/* Map card */}
+                    <div className="w-full lg:flex-1 bg-white rounded-[4px] overflow-hidden shadow-2xl relative">
+                        {/* Badge */}
+                        <div className="absolute top-3 left-3 z-10 bg-accent-red text-white text-[9px] font-inter font-bold uppercase tracking-widest px-2 py-1 rounded-sm">
+                            EPX Network
+                        </div>
+                        <picture>
+                            <source srcSet="/images/coverage/south-africa-map.webp" type="image/webp" />
+                            <img
+                                src={SA_MAP}
+                                alt="South Africa province coverage map showing all 9 provinces"
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-auto block"
+                                style={{ imageRendering: 'auto' }}
+                            />
+                        </picture>
+                    </div>
+
+                    {/* Stats sidebar */}
+                    <div ref={statsRef} className="w-full lg:w-64 flex flex-row flex-wrap lg:flex-col gap-0 border border-white/10 rounded-[4px] overflow-hidden">
+                        {coverageStats.map((stat, idx) => (
+                            <div
+                                key={stat.id}
+                                className="flex-1 min-w-[50%] lg:min-w-0 px-4 md:px-6 py-5 lg:py-8 border-b border-white/10 last:border-b-0 lg:border-b lg:last:border-b-0 bg-white/[0.03]"
+                            >
+                                <span
+                                    id={stat.id}
+                                    className="block font-poppins font-bold text-2xl md:text-4xl text-white leading-none mb-1"
+                                >
+                                    0
+                                </span>
+                                <span className="label-caps text-accent-red text-[10px]">{stat.label}</span>
+                            </div>
+                        ))}
+
+                        {/* CTA inside sidebar */}
+                        <div className="w-full lg:w-auto px-6 py-6 bg-accent-red/10 border-t border-white/10">
+                            <p className="text-white/60 font-inter text-xs leading-relaxed mb-4">
+                                Door-to-door delivery across every province, city, and town in South Africa.
+                            </p>
+                            <a
+                                href="#solutions"
+                                className="inline-flex items-center text-accent-red font-inter font-bold text-xs uppercase tracking-[0.2em] border-b border-accent-red pb-0.5 hover:text-[#b80018] transition-colors duration-200"
+                            >
+                                View Services →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
-
-    const statEl = document.getElementById('map-stats-card');
-    if (statEl) statObserver.observe(statEl);
-
-    return () => {
-      statObserver.disconnect();
-    };
-  }, []);
-
-  return (
-    <section className="bg-primary-dark overflow-hidden noise-overlay">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        <div className="map-header text-center mb-12">
-          <span className="label-caps text-accent-red mb-4 block">Our Coverage</span>
-          <h2 className="font-display text-3xl md:text-6xl font-bold text-white leading-tight">
-            Moving South Africa <span className="text-accent-red">Everywhere.</span>
-          </h2>
-          <p className="mt-6 text-white/50 max-w-2xl mx-auto font-inter text-lg">
-            Operational across all 9 provinces with 40+ strategic hubs
-            ensuring your cargo reaches its destination with surgical precision.
-          </p>
-        </div>
-
-        <div className="sa-map-container relative max-w-4xl mx-auto aspect-square md:aspect-[4/3] flex items-center justify-center">
-          <img
-            src={COVERAGE.map}
-            alt="South Africa coverage map outline"
-            width={800}
-            height={600}
-            loading="lazy"
-            
-            className="absolute inset-0 w-full h-full object-contain"
-          />
-
-          <svg viewBox="0 0 800 600" className="relative z-10 w-full h-full">
-            {COVERAGE_ROUTES.map((d, i) => (
-              <path
-                key={i}
-                className="route-path"
-                d={d}
-                stroke="#E8001D"
-                strokeWidth="2"
-                fill="none"
-                opacity="0.9"
-              />
-            ))}
-            {COVERAGE_HUBS.map((hub, i) => (
-              <HubPulse key={hub.name} x={hub.x} y={hub.y} delay={(i % 10) * 0.2} />
-            ))}
-          </svg>
-
-          <div
-            id="map-stats-card"
-            className="hidden md:block absolute bottom-0 right-0 bg-white/[0.05] backdrop-blur-[12px] border border-white/10 p-6 rounded-lg z-20"
-          >
-            <div className="flex flex-col gap-4">
-              <div>
-                <span className="label-caps text-accent-red mb-1 block" style={{ fontSize: '10px' }}>Total Coverage</span>
-                <span className="text-2xl font-barlow font-black text-white"><span id="map-stat-km">0</span>M SQ KM</span>
-              </div>
-              <div>
-                <span className="label-caps text-accent-red mb-1 block" style={{ fontSize: '10px' }}>Fleet Reach</span>
-                <span className="text-2xl font-barlow font-black text-white">
-                  <span id="map-stat-towns">0</span> TOWNS
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Stats Card */}
-        <div className="md:hidden mt-8 grid grid-cols-2 gap-4 bg-white/[0.05] border border-white/10 p-5 rounded-lg">
-            <div>
-                <span className="label-caps text-accent-red mb-1 block text-[9px]">Total Coverage</span>
-                <span className="text-xl font-barlow font-black text-white"><span id="map-stat-km-mobile">0</span>M SQ KM</span>
-            </div>
-            <div>
-                <span className="label-caps text-accent-red mb-1 block text-[9px]">Fleet Reach</span>
-                <span className="text-xl font-barlow font-black text-white">
-                    <span id="map-stat-towns-mobile">0</span> TOWNS
-                </span>
-            </div>
-        </div>
-      </div>
-    </section>
-  );
 }

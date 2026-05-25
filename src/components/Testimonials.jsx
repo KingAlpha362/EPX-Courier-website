@@ -41,15 +41,15 @@ const testimonials = [
 
 export default function Testimonials() {
     return (
-        <section className="bg-white py-24 px-0 overflow-hidden" id="testimonials">
-            <div className="max-w-[1200px] mx-auto px-4 mb-16">
-                <div className="text-center md:text-left reveal">
-                    <span className="label-caps text-accent-red mb-4 block font-bold tracking-[0.3em] text-xs uppercase">Social Proof</span>
-                    <h2 className="font-display text-4xl md:text-6xl font-black text-text-primary leading-[0.95] tracking-tight uppercase">
+        <section className="bg-white py-14 md:py-24 px-0 overflow-hidden" id="testimonials">
+            <div className="max-w-[1200px] mx-auto px-4 mb-10 md:mb-16">
+                <div className="text-center md:text-left">
+                    <span className="label-caps text-accent-red mb-4 block font-bold tracking-[0.3em] text-xs uppercase reveal">Social Proof</span>
+                    <h2 className="font-display text-4xl md:text-6xl font-bold text-text-primary leading-tight tracking-tight reveal reveal-delay-1">
                         What They <span className="text-accent-red">Say.</span>
                     </h2>
-                    <p className="mt-4 text-gray-500 font-inter text-sm max-w-xl">
-                        Real-time feedback from our enterprise clients and partners across South Africa. 
+                    <p className="mt-4 text-gray-500 font-inter text-sm max-w-xl reveal reveal-delay-2">
+                        Real-time feedback from our enterprise clients and partners across South Africa.
                         Verified via Google Business.
                     </p>
                 </div>

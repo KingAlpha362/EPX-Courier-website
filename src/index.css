@@ -9,6 +9,12 @@
   --surface-light: #F4F5F7;
   --surface-white: #FFFFFF;
   --text-primary: #1A1A2E;
+  /* Emil Kowalski recommended easing curves */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Alias kept for backward compat */
+  --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @layer base {
@@ -52,20 +58,17 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
-
-  h1 { font-weight: 800; }
 }
 
 @layer components {
   .font-display {
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: -0.01em;
   }
 
   .label-caps {
@@ -77,56 +80,176 @@
   }
 
   .btn-hero-primary {
-    padding: 14px 32px;
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border-radius: 2px;
     background-color: var(--accent-red);
     color: white;
-    transition: background-color 0.2s ease;
+    transition:
+      background-color 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      transform 0.16s var(--ease-out);
+    box-shadow: 0 2px 12px rgba(232, 0, 29, 0.25);
   }
 
-  .btn-hero-primary:hover {
-    background-color: #b80018;
+  @media (hover: hover) and (pointer: fine) {
+    .btn-hero-primary:hover {
+      background-color: #b80018;
+      box-shadow: 0 4px 24px rgba(232, 0, 29, 0.4);
+    }
+
+    .btn-hero-primary:hover .btn-arrow {
+      transform: translateX(3px) translateY(-1px) scale(1.08);
+      background: rgba(255,255,255,0.22);
+    }
+
+    .btn-hero-ghost:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    .btn-hero-ghost:hover .btn-arrow {
+      transform: translateX(3px) translateY(-1px) scale(1.08);
+    }
+  }
+
+  .btn-hero-primary:active {
+    transform: scale(0.97);
+  }
+
+  .btn-hero-primary .btn-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s var(--ease-out), background 0.25s var(--ease-out);
   }
 
   .btn-hero-ghost {
-    padding: 14px 32px;
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border-radius: 2px;
-    border: 1.5px solid white;
-    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.04);
     color: white;
-    transition: background-color 0.2s ease;
+    transition:
+      background-color 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out),
+      transform 0.16s var(--ease-out);
   }
 
-  .btn-hero-ghost:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  .btn-hero-ghost:active {
+    transform: scale(0.97);
+  }
+
+  .btn-hero-ghost .btn-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  /* ── Scroll reveal ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Emil: stagger 30–80ms between items */
+  .reveal-delay-1 { transition-delay: 60ms; }
+  .reveal-delay-2 { transition-delay: 120ms; }
+  .reveal-delay-3 { transition-delay: 180ms; }
+  .reveal-delay-4 { transition-delay: 240ms; }
+  .reveal-delay-5 { transition-delay: 300ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      transform: none;
+      transition: opacity 0.2s ease-out;
+    }
+  }
+
+  /* ── Premium card ── */
+  .card-premium {
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 4px 16px rgba(0,0,0,0.06),
+      0 0 0 1px rgba(0,0,0,0.035);
+    transition:
+      box-shadow 0.6s var(--ease-out),
+      transform 0.6s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-premium:hover {
+      box-shadow:
+        0 2px 6px rgba(0,0,0,0.05),
+        0 20px 48px rgba(0,0,0,0.13),
+        0 0 0 1px rgba(0,0,0,0.035);
+      transform: translateY(-5px);
+    }
+  }
+
+  /* ── Double-bezel outer shell ── */
+  .bezel-outer {
+    padding: 1.5px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04));
+    border-radius: 4px;
+  }
+
+  .bezel-inner {
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   .img-cinematic {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: box-shadow 0.6s var(--ease-out), transform 0.6s var(--ease-out);
   }
-  
-  .img-cinematic:hover {
-    box-shadow: 0 16px 48px rgba(0,0,0,0.14);
-    transform: scale(1.02);
+
+  @media (hover: hover) and (pointer: fine) {
+    .img-cinematic:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+      transform: scale(1.02);
+    }
+
+    .img-cinematic:hover img {
+      transform: scale(1.06);
+    }
   }
 
   .img-cinematic img {
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .img-cinematic:hover img {
-    transform: scale(1.06);
+    transition: transform 0.6s var(--ease-out);
   }
 
   .section-padding {
@@ -148,12 +271,14 @@
     background: var(--accent-red);
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s var(--ease-out);
   }
 
-  .nav-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 
   .feature-img-wrap {

@@ -10,7 +10,8 @@ const services = [
         desc: "Drop off or collect from any one of our conveniently located branches across the country.",
         image: SERVICES.parcelDelivery,
         icon: "packageDelivery",
-        linkText: "Find a Branch"
+        linkText: "Find a Branch",
+        href: "#coverage",
     },
     {
         tag: "Bulk Freight",
@@ -18,32 +19,32 @@ const services = [
         desc: "High-volume, palletised freight between major centres with competitive rates and dedicated management.",
         image: SERVICES.bulkFreight,
         icon: "deliveryTruck",
-        linkText: "Learn More"
+        linkText: "Our Capabilities",
+        href: "#features",
     },
     {
-        tag: "Hub Ops",
+        tag: "Hub Operations",
         title: "Sortation & Distribution",
-        desc: "State-of-the-art hub operations with advanced sortation technology ensure accurate processing.",
+        desc: "State-of-the-art hub operations with advanced sortation technology ensure accurate, on-time processing.",
         image: SERVICES.operationsHub,
         icon: "loading",
-        linkText: "Our Network"
+        linkText: "Our Network",
+        href: "#coverage",
     },
     {
         tag: "Managed Logistics",
         title: "Enterprise Fleet Ops",
-        desc: "Custom fleet management solutions for large enterprises requiring scale and precision.",
-        image: SERVICES.managedFleet || SERVICES.bulkFreight,
+        desc: "Custom fleet management solutions for large enterprises requiring scale, precision, and dedicated account management.",
+        image: SERVICES.managedFleet,
         icon: "courier",
-        linkText: "Custom Quote"
+        linkText: "Get a Custom Quote",
+        href: "#contact",
     }
 ];
 
 export default function Services() {
-    const sectionRef = useRef(null);
     const scrollRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
-
-
 
     const handleScroll = () => {
         if (!scrollRef.current) return;
@@ -56,47 +57,81 @@ export default function Services() {
     return (
         <section className="bg-surface-light overflow-hidden py-20" id="solutions">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-                <div className="mb-12 text-center md:text-left">
+                <div className="mb-12 text-center md:text-left reveal">
                     <span className="label-caps text-accent-red mb-2 block font-semibold tracking-widest text-xs">Our Solutions</span>
-                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[0.95] tracking-tight uppercase">
+                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight tracking-tight">
                         Every Delivery Need. <br /><span className="text-accent-red">Covered.</span>
                     </h2>
                 </div>
 
-                <div 
+                <div
                     ref={scrollRef}
                     onScroll={handleScroll}
-                    className="flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 -mx-4 px-4 md:mx-0 md:px-0"
+                    className="flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0"
                 >
-                    {services.map((service, idx) => (
-                        <div
-                            key={idx}
-                            className="snap-start shrink-0 w-[85vw] md:w-auto flex flex-col items-start p-8 bg-white rounded-[2px] border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
-                        >
-                            <div className="mb-6 bg-gray-50 p-4 rounded-full">
-                                <Flaticon icon={service.icon} className="w-10 h-10" />
+                    {services.map((service, idx) => {
+                        const isDark = idx === 3;
+                        return (
+                            <div
+                                key={idx}
+                                className={`reveal reveal-delay-${idx + 1} snap-start shrink-0 w-[82vw] md:w-auto ${isDark ? '' : 'bezel-outer card-premium'}`}
+                                style={isDark ? {
+                                    background: 'var(--primary-dark)',
+                                    borderRadius: '4px',
+                                    boxShadow: '0 4px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.07)',
+                                    transition: 'box-shadow 0.6s var(--ease-out), transform 0.6s var(--ease-out)',
+                                } : {}}
+                            >
+                                <div className={`flex flex-col h-full overflow-hidden ${isDark ? '' : 'bezel-inner bg-white rounded-[3px]'}`}>
+                                    {/* Card image */}
+                                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="w-full h-full object-cover"
+                                            style={{ transition: 'transform 0.6s var(--ease-out)' }}
+                                        />
+                                        <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-primary-dark/60 to-transparent' : 'bg-primary-dark/10'}`} />
+                                    </div>
+
+                                    {/* Card content */}
+                                    <div className={`flex flex-col items-start p-4 md:p-6 flex-1`}>
+                                        <div className={`mb-4 p-3.5 rounded-full ${isDark ? 'bg-accent-red/15 border border-accent-red/30' : 'bg-accent-red/5 border border-accent-red/10'}`}>
+                                            <Flaticon icon={service.icon} className={`w-8 h-8 ${isDark ? 'flaticon-white' : ''}`} />
+                                        </div>
+                                        <span className="label-caps text-accent-red mb-2 block text-[10px] font-bold">
+                                            {service.tag}
+                                        </span>
+                                        <h4 className={`font-display text-lg font-bold mb-3 leading-snug ${isDark ? 'text-white' : 'text-text-primary'}`}>
+                                            {service.title}
+                                        </h4>
+                                        <p className={`font-inter text-sm leading-relaxed mb-6 flex-grow ${isDark ? 'text-white/55' : 'text-text-primary/60'}`}>
+                                            {service.desc}
+                                        </p>
+                                        <a
+                                            href={service.href}
+                                            className="inline-flex items-center gap-2 text-accent-red font-inter font-bold text-xs uppercase tracking-widest border-b-2 border-accent-red pb-1 hover:text-[#ff3348] hover:border-[#ff3348] transition-colors duration-200"
+                                        >
+                                            {service.linkText} →
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <span className="label-caps text-accent-red mb-2 block text-[10px] font-bold">
-                                {service.tag}
-                            </span>
-                            <h4 className="font-display text-2xl font-black text-text-primary mb-3 uppercase leading-tight">{service.title}</h4>
-                            <p className="text-text-primary/60 font-inter text-sm leading-relaxed mb-6 flex-grow">{service.desc}</p>
-                            <a href="#" className="text-accent-red font-inter font-bold text-xs uppercase tracking-widest border-b-2 border-accent-red pb-1 hover:text-[#b80018] hover:border-[#b80018] transition-all">
-                                {service.linkText} →
-                            </a>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
-                {/* Mobile Pagination Dots */}
-                <div className="flex md:hidden justify-center gap-2 mt-8">
+                {/* Mobile pagination dots — larger, higher contrast */}
+                <div className="flex md:hidden justify-center gap-2.5 mt-8">
                     {services.map((_, i) => (
-                        <div 
-                            key={i} 
+                        <div
+                            key={i}
                             className={cn(
-                                "w-2 h-2 rounded-full transition-all duration-300",
-                                activeIndex === i ? "bg-accent-red w-4" : "bg-gray-200"
-                            )} 
+                                "h-2.5 rounded-full transition-all duration-300",
+                                activeIndex === i ? "bg-accent-red w-6" : "w-2.5 bg-black/20"
+                            )}
                         />
                     ))}
                 </div>
