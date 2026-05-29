@@ -34,3 +34,6 @@ dist-ssr
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Local asset stash (not used by the build)
+/website-components/
