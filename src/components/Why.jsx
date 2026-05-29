@@ -18,12 +18,12 @@ export default function Why() {
                     <div className="w-full lg:w-1/2 lg:sticky lg:top-24 lg:self-start">
                         <div className="relative w-full aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[calc(100vh-6rem)] overflow-hidden rounded-[2px]">
                             <img
-                                src={WHY.storyImage}
-                                alt="EPX Team — It's All About You"
+                                src={WHY.freightTruck}
+                                alt="EPX Courier Services fleet truck"
                                 width={960}
                                 height={640}
                                 loading="lazy"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-left"
                             />
                             {/* Brand callout overlay */}
                             <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 bg-gradient-to-t from-primary-dark/80 to-transparent">
