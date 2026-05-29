@@ -53,7 +53,8 @@ export default function Hero() {
                         width={1920}
                         height={1080}
                         fetchPriority="high"
-                        className="w-full h-full object-cover object-center"
+                        className="w-full h-full object-contain object-center"
+                        style={{ transform: 'scale(0.75)', transformOrigin: 'center center' }}
                     />
                 </div>
             </div>
