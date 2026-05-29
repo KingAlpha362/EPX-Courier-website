@@ -113,9 +113,14 @@ export default function Footer() {
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-white transition-colors">POPIA</a>
           </div>
-          <span className="text-white/40 uppercase tracking-widest text-[10px]">
-            Designed for E.P.X. Courier Services
-          </span>
+          <a
+            href="https://www.linkedin.com/in/alphatapfuma/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white/40 hover:text-white uppercase tracking-widest text-[10px] transition-colors duration-200"
+          >
+            Designed by Alpha Tapfuma
+          </a>
         </div>
       </div>
     </footer>

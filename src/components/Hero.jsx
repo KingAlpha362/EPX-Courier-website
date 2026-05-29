@@ -1,15 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { CountUp } from 'countup.js';
 import { HERO } from '@/constants/images';
 import TrackingTimeline from '@/components/TrackingTimeline';
 import { useMagnetic } from '@/hooks/useMagnetic';
-
-const heroStats = [
-    { id: 'hero-stat-0', end: 500,  suffix: '+',  label: 'Fleet Vehicles' },
-    { id: 'hero-stat-1', end: 1200, suffix: '+',  separator: ',', label: 'Enterprise Clients' },
-    { id: 'hero-stat-2', end: 100,  suffix: 'K+', label: 'Daily Deliveries' },
-    { id: 'hero-stat-3', end: 99.2, suffix: '%',  decimals: 1, label: 'On-Time Rate' },
-];
 
 export default function Hero() {
     const bgRef = useRef(null);
@@ -41,22 +33,6 @@ export default function Hero() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    // CountUp hero stats on mount
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            heroStats.forEach((s) => {
-                const cu = new CountUp(s.id, s.end, {
-                    duration: 2,
-                    suffix: s.suffix ?? '',
-                    separator: s.separator ?? '',
-                    decimalPlaces: s.decimals ?? 0,
-                });
-                if (!cu.error) cu.start();
-            });
-        }, 700);
-        return () => clearTimeout(timer);
-    }, []);
-
     const handleTrack = (e) => {
         e.preventDefault();
         setShowTrack(true);
@@ -71,18 +47,14 @@ export default function Hero() {
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div ref={bgRef} className="absolute w-full" style={{ top: '-10%', height: '120%' }}>
                     <div className="absolute inset-0 hero-split-overlay z-10 pointer-events-none" />
-                    <picture>
-                        <source media="(max-width: 768px)" srcSet={HERO.backgroundMobile} type="image/webp" />
-                        <source srcSet={HERO.background} type="image/webp" />
-                        <img
-                            src={HERO.background}
-                            alt="EPX Fleet in Motion"
-                            width={1920}
-                            height={1080}
-                            fetchPriority="high"
-                            className="w-full h-full object-cover object-center"
-                        />
-                    </picture>
+                    <img
+                        src={HERO.backgroundMobile}
+                        alt="EPX courier handing over a parcel"
+                        width={1920}
+                        height={1080}
+                        fetchPriority="high"
+                        className="w-full h-full object-cover object-center"
+                    />
                 </div>
             </div>
 
@@ -172,30 +144,6 @@ export default function Hero() {
                             South Africa&apos;s trusted enterprise-grade courier network — precision, scale, and unmatched reliability.
                         </p>
                     </div>
-                </div>
-            </div>
-
-            {/* ── Stats bar — overlaid at the bottom of the hero image ── */}
-            <div className="relative z-20 border-t border-white/[0.08] bg-black/40 backdrop-blur-md">
-                <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x-0 md:divide-x divide-white/[0.08]">
-                    {heroStats.map((stat, idx) => (
-                        <div
-                            key={stat.label}
-                            className={`flex flex-col items-center md:items-start justify-center px-5 md:px-8 py-5 md:py-6 ${
-                                idx % 2 === 0 && idx < 2 ? 'border-r border-white/[0.08] md:border-r-0' : ''
-                            } ${idx < 2 ? 'border-b border-white/[0.08] md:border-b-0' : ''}`}
-                        >
-                            <span
-                                id={stat.id}
-                                className="block font-poppins font-bold text-2xl md:text-3xl text-white leading-none"
-                            >
-                                0
-                            </span>
-                            <span className="mt-1 block font-inter text-[10px] text-white/45 uppercase tracking-[0.15em]">
-                                {stat.label}
-                            </span>
-                        </div>
-                    ))}
                 </div>
             </div>
 

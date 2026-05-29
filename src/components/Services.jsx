@@ -69,58 +69,49 @@ export default function Services() {
                     onScroll={handleScroll}
                     className="flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0"
                 >
-                    {services.map((service, idx) => {
-                        const isDark = idx === 3;
-                        return (
-                            <div
-                                key={idx}
-                                className={`reveal reveal-delay-${idx + 1} snap-start shrink-0 w-[82vw] md:w-auto ${isDark ? '' : 'bezel-outer card-premium'}`}
-                                style={isDark ? {
-                                    background: 'var(--primary-dark)',
-                                    borderRadius: '4px',
-                                    boxShadow: '0 4px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.07)',
-                                    transition: 'box-shadow 0.6s var(--ease-out), transform 0.6s var(--ease-out)',
-                                } : {}}
-                            >
-                                <div className={`flex flex-col h-full overflow-hidden ${isDark ? '' : 'bezel-inner bg-white rounded-[3px]'}`}>
-                                    {/* Card image */}
-                                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            loading="lazy"
-                                            decoding="async"
-                                            className="w-full h-full object-cover"
-                                            style={{ transition: 'transform 0.6s var(--ease-out)' }}
-                                        />
-                                        <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-primary-dark/60 to-transparent' : 'bg-primary-dark/10'}`} />
-                                    </div>
+                    {services.map((service, idx) => (
+                        <div
+                            key={idx}
+                            className={`reveal reveal-delay-${idx + 1} snap-start shrink-0 w-[82vw] md:w-auto bezel-outer card-premium`}
+                        >
+                            <div className="flex flex-col h-full overflow-hidden bezel-inner bg-white rounded-[3px]">
+                                {/* Card image */}
+                                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-full object-cover"
+                                        style={{ transition: 'transform 0.6s var(--ease-out)' }}
+                                    />
+                                    <div className="absolute inset-0 bg-primary-dark/10" />
+                                </div>
 
-                                    {/* Card content */}
-                                    <div className={`flex flex-col items-start p-4 md:p-6 flex-1`}>
-                                        <div className={`mb-4 p-3.5 rounded-full ${isDark ? 'bg-accent-red/15 border border-accent-red/30' : 'bg-accent-red/5 border border-accent-red/10'}`}>
-                                            <Flaticon icon={service.icon} className={`w-8 h-8 ${isDark ? 'flaticon-white' : ''}`} />
-                                        </div>
-                                        <span className="label-caps text-accent-red mb-2 block text-[10px] font-bold">
-                                            {service.tag}
-                                        </span>
-                                        <h4 className={`font-display text-lg font-bold mb-3 leading-snug ${isDark ? 'text-white' : 'text-text-primary'}`}>
-                                            {service.title}
-                                        </h4>
-                                        <p className={`font-inter text-sm leading-relaxed mb-6 flex-grow ${isDark ? 'text-white/55' : 'text-text-primary/60'}`}>
-                                            {service.desc}
-                                        </p>
-                                        <a
-                                            href={service.href}
-                                            className="inline-flex items-center gap-2 text-accent-red font-inter font-bold text-xs uppercase tracking-widest border-b-2 border-accent-red pb-1 hover:text-[#ff3348] hover:border-[#ff3348] transition-colors duration-200"
-                                        >
-                                            {service.linkText} →
-                                        </a>
+                                {/* Card content */}
+                                <div className="flex flex-col items-start p-4 md:p-6 flex-1">
+                                    <div className="mb-4 p-3.5 rounded-full bg-accent-red/5 border border-accent-red/10">
+                                        <Flaticon icon={service.icon} className="w-8 h-8" />
                                     </div>
+                                    <span className="label-caps text-accent-red mb-2 block text-[10px] font-bold">
+                                        {service.tag}
+                                    </span>
+                                    <h4 className="font-display text-lg font-bold mb-3 leading-snug text-text-primary">
+                                        {service.title}
+                                    </h4>
+                                    <p className="font-inter text-sm leading-relaxed mb-6 flex-grow text-text-primary/60">
+                                        {service.desc}
+                                    </p>
+                                    <a
+                                        href={service.href}
+                                        className="inline-flex items-center gap-2 text-accent-red font-inter font-bold text-xs uppercase tracking-widest border-b-2 border-accent-red pb-1 hover:text-[#ff3348] hover:border-[#ff3348] transition-colors duration-200"
+                                    >
+                                        {service.linkText} →
+                                    </a>
                                 </div>
                             </div>
-                        );
-                    })}
+                        </div>
+                    ))}
                 </div>
 
                 {/* Mobile pagination dots — larger, higher contrast */}

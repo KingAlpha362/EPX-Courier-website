@@ -10,6 +10,7 @@ import { BRAND } from '@/constants/images';
 export default function Header() {
 	const [open, setOpen] = React.useState(false);
 	const [activeId, setActiveId] = React.useState('');
+	const [hidden, setHidden] = React.useState(false);
 	const scrolled = useScroll(10);
 	const quoteRef = useMagnetic(0.3);
 
@@ -20,6 +21,33 @@ export default function Header() {
 		{ label: 'Track & Trace', href: 'https://epx.pperfect.com/', external: true },
 		{ label: 'Contact', href: '#faq' },
 	];
+
+	// Hide the header when scrolling down, reveal it when scrolling up.
+	// Always visible near the top of the page or while the mobile menu is open.
+	React.useEffect(() => {
+		let lastY = window.scrollY;
+		let ticking = false;
+		const update = () => {
+			const y = window.scrollY;
+			if (y < 80 || open) {
+				setHidden(false);
+			} else if (y > lastY + 4) {
+				setHidden(true);
+			} else if (y < lastY - 4) {
+				setHidden(false);
+			}
+			lastY = y;
+			ticking = false;
+		};
+		const onScroll = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(update);
+				ticking = true;
+			}
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	}, [open]);
 
 	React.useEffect(() => {
 		if (open) {
@@ -50,7 +78,8 @@ export default function Header() {
 				{
 					'bg-primary-dark/95 border-white/5 backdrop-blur-lg shadow-xl py-0': scrolled,
 					'bg-transparent py-2': !scrolled,
-					'bg-primary-dark': open
+					'bg-primary-dark': open,
+					'-translate-y-full': hidden && !open,
 				}
 			)}
 		>
@@ -88,12 +117,21 @@ export default function Header() {
 					})}
 					<div className="w-px h-4 bg-white/10 mx-3 hidden lg:block" />
 					<a
+						data-cursor
+						href="https://online.epx.co.za/pponline/"
+						target="_blank"
+						rel="noreferrer"
+						className="inline-flex items-center justify-center border border-white/20 hover:border-white/40 hover:bg-white/5 text-white rounded-[4px] font-inter font-bold text-[11px] uppercase tracking-widest h-11 px-5 transition-colors duration-200"
+					>
+						Client Portal
+					</a>
+					<a
 						ref={quoteRef}
 						data-cursor
 						href="https://www.epx.co.za/"
 						target="_blank"
 						rel="noreferrer"
-						className="inline-flex items-center justify-center bg-accent-red hover:bg-[#b00217] text-white border-none rounded-[4px] font-inter font-bold text-[11px] uppercase tracking-widest h-11 px-5 ml-1 transition-[background-color,transform] duration-200"
+						className="inline-flex items-center justify-center bg-accent-red hover:bg-[#b00217] text-white border-none rounded-[4px] font-inter font-bold text-[11px] uppercase tracking-widest h-11 px-5 ml-2 transition-[background-color,transform] duration-200"
 					>
 						Get a Quote
 					</a>
@@ -160,6 +198,15 @@ export default function Header() {
 							className="w-full h-12 flex items-center justify-center text-sm border border-white/20 hover:border-white/40 text-white rounded-[4px] font-semibold uppercase tracking-widest transition-colors"
 						>
 							Track My Parcel →
+						</a>
+						<a
+							href="https://online.epx.co.za/pponline/"
+							target="_blank"
+							rel="noreferrer"
+							onClick={() => setOpen(false)}
+							className="w-full h-12 flex items-center justify-center text-sm border border-white/20 hover:border-white/40 text-white rounded-[4px] font-semibold uppercase tracking-widest transition-colors"
+						>
+							Client Portal →
 						</a>
 					</div>
 				</div>

@@ -27,10 +27,10 @@ export const SERVICES = {
 }
 
 export const FEATURES = {
-  linehaul: `${base}/features/linehaul-network.webp`,
-  managedFleet: `${base}/features/managed-fleet.webp`,
+  linehaul: `${base}/EPX-TRUCKING-BENZ.jpg`,
+  managedFleet: `${base}/fleet-showcase.jpg`,
   tracking: `${base}/features/tracking-technology.webp`,
-  warehousing: `${base}/features/warehousing-hub.webp`,
+  warehousing: `${base}/TRUCK-BRANCH.jpg`,
 }
 
 export const WHY = {
