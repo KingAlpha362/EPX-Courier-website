@@ -67,7 +67,7 @@ export default function Services() {
                 <div
                     ref={scrollRef}
                     onScroll={handleScroll}
-                    className="flex md:grid md:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0"
+                    className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 md:gap-6 -mx-4 px-4 md:mx-0 md:px-0"
                 >
                     {services.map((service, idx) => (
                         <div
@@ -76,7 +76,7 @@ export default function Services() {
                         >
                             <div className="flex flex-col h-full overflow-hidden bezel-inner bg-white rounded-[3px]">
                                 {/* Card image */}
-                                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4/3' }}>
                                     <img
                                         src={service.image}
                                         alt={service.title}
