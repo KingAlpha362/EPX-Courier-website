@@ -16,6 +16,7 @@ export default function Why() {
 
                     {/* Story image — sticky on desktop, normal flow on mobile */}
                     <div className="w-full lg:w-1/2 lg:sticky lg:top-24 lg:self-start">
+                        <div className="flex flex-col gap-4">
                         <div className="relative w-full aspect-[4/3] md:aspect-video lg:aspect-[3/2] overflow-hidden rounded-[2px]">
                             <img
                                 src={WHY.freightTruck}
@@ -32,6 +33,17 @@ export default function Why() {
                                 </span>
                                 <p className="text-white/60 font-inter text-xs mt-1">Founded April 1999 — Edwards Parcel Express</p>
                             </div>
+                        </div>
+                        <div className="relative w-full aspect-[4/3] md:aspect-video lg:aspect-[3/2] overflow-hidden rounded-[2px]">
+                            <img
+                                src="/images/IMG_4563-HDR.jpg"
+                                alt="EPX fleet at depot"
+                                width={960}
+                                height={640}
+                                loading="lazy"
+                                className="w-full h-full object-cover object-center"
+                            />
+                        </div>
                         </div>
                     </div>
 
