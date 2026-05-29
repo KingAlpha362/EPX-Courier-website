@@ -8,6 +8,15 @@ function PhoneIcon() {
     );
 }
 
+function ArrowUpIcon() {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+            <line x1="12" y1="19" x2="12" y2="5" />
+            <polyline points="5 12 12 5 19 12" />
+        </svg>
+    );
+}
+
 function WhatsAppIcon() {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -37,6 +46,17 @@ export default function FloatingCTA() {
                 transition: 'opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out)',
             }}
         >
+            <button
+                type="button"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                aria-label="Back to top"
+                title="Back to top"
+                data-cursor
+                className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/15 flex items-center justify-center shadow-lg active:scale-95"
+                style={{ transition: 'background-color 0.2s var(--ease-out), transform 0.16s var(--ease-out)' }}
+            >
+                <ArrowUpIcon />
+            </button>
             <a
                 href="https://wa.me/27861379542"
                 target="_blank"

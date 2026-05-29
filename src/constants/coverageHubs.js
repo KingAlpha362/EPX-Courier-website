@@ -1,53 +1,47 @@
-/** Hub coordinates on 800×600 SA map viewBox */
-export const COVERAGE_HUBS = [
-  { x: 520, y: 180, name: 'Johannesburg' },
-  { x: 530, y: 100, name: 'Polokwane' },
-  { x: 500, y: 130, name: 'Tzaneen' },
-  { x: 480, y: 95, name: 'Musina' },
-  { x: 560, y: 150, name: 'Nelspruit' },
-  { x: 600, y: 200, name: 'Ermelo' },
-  { x: 620, y: 260, name: 'Durban' },
-  { x: 640, y: 230, name: 'Richards Bay' },
-  { x: 590, y: 290, name: 'Pietermaritzburg' },
-  { x: 550, y: 320, name: 'East London' },
-  { x: 450, y: 530, name: 'Gqeberha' },
-  { x: 420, y: 480, name: 'Mthatha' },
-  { x: 250, y: 520, name: 'Cape Town' },
-  { x: 200, y: 450, name: 'George' },
-  { x: 280, y: 400, name: 'Beaufort West' },
-  { x: 350, y: 350, name: 'Bloemfontein' },
-  { x: 400, y: 280, name: 'Kimberley' },
-  { x: 440, y: 220, name: 'Welkom' },
-  { x: 470, y: 200, name: 'Vereeniging' },
-  { x: 510, y: 210, name: 'Pretoria' },
-  { x: 540, y: 195, name: 'Centurion' },
-  { x: 495, y: 165, name: 'Rustenburg' },
-  { x: 460, y: 140, name: 'Mahikeng' },
-  { x: 430, y: 170, name: 'Klerksdorp' },
-  { x: 380, y: 190, name: 'Potchefstroom' },
-  { x: 300, y: 300, name: 'Upington' },
-  { x: 320, y: 250, name: 'De Aar' },
-  { x: 360, y: 420, name: 'Mossel Bay' },
-  { x: 270, y: 480, name: 'Hermanus' },
-  { x: 230, y: 390, name: 'Saldanha' },
-  { x: 580, y: 175, name: 'Witbank' },
-  { x: 505, y: 240, name: 'Secunda' },
-  { x: 610, y: 280, name: 'Port Shepstone' },
-  { x: 565, y: 250, name: 'Newcastle' },
-  { x: 475, y: 310, name: 'Queenstown' },
-  { x: 410, y: 380, name: 'Graaff-Reinet' },
-  { x: 390, y: 320, name: 'Colesberg' },
-  { x: 455, y: 260, name: 'Kroonstad' },
-  { x: 515, y: 255, name: 'Heidelberg' },
-  { x: 535, y: 220, name: 'Springs' },
-  { x: 548, y: 168, name: 'Brits' },
+/**
+ * Hub + linehaul-route geometry for the interactive coverage map.
+ * Coordinates are calibrated to the 890×762 SA map image
+ * (public/images/coverage/south-africa-map.webp) and used as the SVG viewBox,
+ * so an overlay at the image's rendered size aligns 1:1.
+ */
+
+export const MAP_VIEWBOX = { w: 890, h: 762 };
+
+/** Central linehaul origin all primary routes radiate from. */
+export const HUB_ORIGIN = { x: 618, y: 247 };
+
+/** Interactive network hubs — one or more per province (all 9 covered). */
+export const MAJOR_HUBS = [
+  { name: 'Johannesburg', province: 'Gauteng',       x: 618, y: 247, hub: true },
+  { name: 'Pretoria',     province: 'Gauteng',       x: 640, y: 216 },
+  { name: 'Cape Town',    province: 'Western Cape',  x: 128, y: 688, major: true },
+  { name: 'Durban',       province: 'KwaZulu-Natal', x: 793, y: 470, major: true },
+  { name: 'Gqeberha',     province: 'Eastern Cape',  x: 540, y: 690, major: true },
+  { name: 'East London',  province: 'Eastern Cape',  x: 608, y: 650 },
+  { name: 'Bloemfontein', province: 'Free State',    x: 522, y: 410, major: true },
+  { name: 'Polokwane',    province: 'Limpopo',       x: 700, y: 117 },
+  { name: 'Mbombela',     province: 'Mpumalanga',    x: 793, y: 205 },
+  { name: 'Kimberley',    province: 'Northern Cape', x: 455, y: 392 },
+  { name: 'Mahikeng',     province: 'North West',    x: 490, y: 232 },
+  { name: 'Richards Bay', province: 'KwaZulu-Natal', x: 790, y: 388 },
+  { name: 'Pietermaritzburg', province: 'KwaZulu-Natal', x: 760, y: 423 },
+  { name: 'Mthatha',      province: 'Eastern Cape',  x: 660, y: 553 },
+  { name: 'Upington',     province: 'Northern Cape', x: 268, y: 372 },
+  { name: 'Welkom',       province: 'Free State',    x: 558, y: 355 },
 ];
 
-export const COVERAGE_ROUTES = [
-  'M 520,180 Q 400,350 250,520',
-  'M 520,180 Q 580,220 620,260',
-  'M 520,180 L 530,100',
-  'M 520,180 Q 480,400 450,530',
-  'M 520,180 Q 380,280 350,350',
-  'M 520,180 Q 420,220 400,280',
+/**
+ * Linehaul routes from the Johannesburg hub to major centres.
+ * `primary` routes get bolder styling + a travelling flow pulse.
+ */
+export const LINEHAUL_ROUTES = [
+  { to: 'Cape Town',    d: 'M618,247 Q360,440 128,688', primary: true },
+  { to: 'Durban',       d: 'M618,247 Q740,320 793,470', primary: true },
+  { to: 'Gqeberha',     d: 'M618,247 Q545,490 540,690', primary: true },
+  { to: 'Bloemfontein', d: 'M618,247 Q558,325 522,410' },
+  { to: 'Polokwane',    d: 'M618,247 Q672,170 700,117' },
+  { to: 'Mbombela',     d: 'M618,247 Q725,205 793,205' },
+  { to: 'East London',  d: 'M618,247 Q645,455 608,650' },
+  { to: 'Kimberley',    d: 'M618,247 Q520,310 455,392' },
+  { to: 'Upington',     d: 'M618,247 Q430,300 268,372' },
 ];

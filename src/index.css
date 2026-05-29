@@ -361,7 +361,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(10, 14, 26, 0) 0%, rgba(10, 14, 26, 0.4) 60%, #0A0E1A 100%);
+    background: linear-gradient(to bottom, rgba(10, 14, 26, 0.55) 0%, rgba(10, 14, 26, 0.45) 45%, #0A0E1A 100%);
     pointer-events: none;
     z-index: 10;
   }
@@ -397,4 +397,169 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent-red);
+}
+
+/* ── Global polish: selection + focus ───────────────────────────────── */
+::selection {
+  background: var(--accent-red);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Hero entrance choreography ─────────────────────────────────────── */
+.hero-anim .hero-enter {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: var(--enter-delay, 0s);
+}
+.hero-anim.hero-ready .hero-enter {
+  opacity: 1;
+  transform: none;
+}
+.hero-headline-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em; /* keep descenders/italics from clipping */
+}
+.hero-headline-line > span {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.9s var(--ease-drawer);
+  transition-delay: var(--enter-delay, 0s);
+}
+.hero-anim.hero-ready .hero-headline-line > span {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim .hero-enter,
+  .hero-anim .hero-headline-line > span {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Interactive coverage map ───────────────────────────────────────── */
+@keyframes route-draw { to { stroke-dashoffset: 0; } }
+@keyframes hub-ping {
+  0%   { transform: scale(0.5); opacity: 0.55; }
+  70%  { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+.coverage-route {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.map-active .coverage-route {
+  animation: route-draw 1.5s var(--ease-out) forwards;
+}
+
+.hub-marker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 2;
+}
+.hub-dot {
+  position: relative;
+  z-index: 2;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid var(--accent-red);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s var(--ease-out);
+}
+.hub-marker--major .hub-dot { width: 12px; height: 12px; }
+.hub-marker--origin .hub-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-red);
+  border-color: var(--brand-gold);
+}
+.hub-ping {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--accent-red);
+  opacity: 0;
+}
+.hub-marker--origin .hub-ping { background: var(--brand-gold); }
+.map-active .hub-ping { animation: hub-ping 2.8s var(--ease-out) infinite; }
+
+.hub-tip {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #0a0e1a;
+  color: #fff;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  z-index: 6;
+}
+.hub-tip em {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  margin-top: 2px;
+}
+.hub-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #0a0e1a;
+}
+.hub-marker:hover .hub-dot,
+.hub-marker:focus-visible .hub-dot { transform: scale(1.55); }
+.hub-marker:hover .hub-tip,
+.hub-marker:focus-visible .hub-tip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverage-route,
+  .map-active .coverage-route {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .hub-ping,
+  .map-active .hub-ping { animation: none; opacity: 0; }
 }

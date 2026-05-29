@@ -4,11 +4,14 @@ import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import { BRAND } from '@/constants/images';
 
 export default function Header() {
 	const [open, setOpen] = React.useState(false);
+	const [activeId, setActiveId] = React.useState('');
 	const scrolled = useScroll(10);
+	const quoteRef = useMagnetic(0.3);
 
 	const links = [
 		{ label: 'Services', href: '#features' },
@@ -26,6 +29,19 @@ export default function Header() {
 		}
 		return () => { document.body.style.overflow = ''; };
 	}, [open]);
+
+	// Active-section indicator for the nav links.
+	React.useEffect(() => {
+		const ids = ['features', 'solutions', 'why', 'coverage', 'faq'];
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((e) => { if (e.isIntersecting) setActiveId(e.target.id); });
+			},
+			{ rootMargin: '-45% 0px -50% 0px' }
+		);
+		ids.forEach((id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
+		return () => observer.disconnect();
+	}, []);
 
 	return (
 		<header
@@ -49,25 +65,35 @@ export default function Header() {
 					/>
 				</a>
 				<div className="hidden items-center gap-1 md:flex">
-					{links.map((link, i) => (
-						<a
-							key={i}
-							className={buttonVariants({
-								variant: 'ghost',
-								className: cn("transition-colors font-inter text-[11px] font-semibold uppercase tracking-[0.1em] text-white hover:text-accent-red hover:bg-white/5")
-							})}
-							href={link.href}
-							{...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-						>
-							{link.label}
-						</a>
-					))}
+					{links.map((link, i) => {
+						const active = !link.external && link.href === `#${activeId}`;
+						return (
+							<a
+								key={i}
+								data-cursor
+								aria-current={active ? 'true' : undefined}
+								className={buttonVariants({
+									variant: 'ghost',
+									className: cn(
+										"nav-link transition-colors font-inter text-[11px] font-semibold uppercase tracking-[0.1em] hover:text-accent-red hover:bg-white/5",
+										active ? "text-accent-red" : "text-white"
+									)
+								})}
+								href={link.href}
+								{...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+							>
+								{link.label}
+							</a>
+						);
+					})}
 					<div className="w-px h-4 bg-white/10 mx-3 hidden lg:block" />
 					<a
+						ref={quoteRef}
+						data-cursor
 						href="https://www.epx.co.za/"
 						target="_blank"
 						rel="noreferrer"
-						className="inline-flex items-center justify-center bg-accent-red hover:bg-[#b00217] text-white border-none rounded-[4px] font-inter font-bold text-[11px] uppercase tracking-widest h-11 px-5 ml-1 transition-colors"
+						className="inline-flex items-center justify-center bg-accent-red hover:bg-[#b00217] text-white border-none rounded-[4px] font-inter font-bold text-[11px] uppercase tracking-widest h-11 px-5 ml-1 transition-[background-color,transform] duration-200"
 					>
 						Get a Quote
 					</a>

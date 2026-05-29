@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { CountUp } from 'countup.js';
 import { HERO } from '@/constants/images';
+import TrackingTimeline from '@/components/TrackingTimeline';
+import { useMagnetic } from '@/hooks/useMagnetic';
 
 const heroStats = [
     { id: 'hero-stat-0', end: 500,  suffix: '+',  label: 'Fleet Vehicles' },
@@ -12,7 +14,21 @@ const heroStats = [
 export default function Hero() {
     const bgRef = useRef(null);
     const [waybill, setWaybill] = useState('');
-    const [toastMsg, setToastMsg] = useState('');
+    const [showTrack, setShowTrack] = useState(false);
+    const [trackRun, setTrackRun] = useState(0);
+    const [entered, setEntered] = useState(false);
+    const shipBtnRef = useMagnetic(0.28);
+    const trackBtnRef = useMagnetic(0.28);
+
+    // Entrance choreography — plays shortly after mount (immediately under reduced-motion).
+    useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setEntered(true);
+            return;
+        }
+        const t = setTimeout(() => setEntered(true), 60);
+        return () => clearTimeout(t);
+    }, []);
 
     // Subtle parallax — desktop only, respects reduced-motion
     useEffect(() => {
@@ -43,19 +59,13 @@ export default function Hero() {
 
     const handleTrack = (e) => {
         e.preventDefault();
-        const trimmed = waybill.trim();
-        const url = trimmed
-            ? `https://epx.pperfect.com/?waybill=${encodeURIComponent(trimmed)}`
-            : 'https://epx.pperfect.com/';
-        window.open(url, '_blank', 'noreferrer');
-        setToastMsg(trimmed ? `Opening tracker for "${trimmed}"…` : 'Opening EPX tracking portal…');
-        const t = setTimeout(() => setToastMsg(''), 3200);
-        return () => clearTimeout(t);
+        setShowTrack(true);
+        setTrackRun((n) => n + 1);
     };
 
     return (
         <section
-            className="hero-section relative min-h-screen flex flex-col overflow-hidden bg-primary-dark noise-overlay"
+            className={`hero-section hero-anim ${entered ? 'hero-ready' : ''} relative min-h-screen flex flex-col overflow-hidden bg-primary-dark noise-overlay`}
         >
             {/* Background image — extra height feeds parallax travel */}
             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -85,7 +95,7 @@ export default function Hero() {
                     <div className="flex flex-col items-center max-w-4xl w-full">
 
                         {/* Eyebrow */}
-                        <div className="inline-flex items-center gap-3 mb-6 md:mb-8">
+                        <div className="hero-enter inline-flex items-center gap-3 mb-6 md:mb-8" style={{ '--enter-delay': '0.05s' }}>
                             <div className="w-6 md:w-8 h-[2px] bg-accent-red" />
                             <span className="label-caps text-accent-red text-[10px] md:text-[11px]">
                                 It&apos;s All About You — since 1999
@@ -93,28 +103,35 @@ export default function Hero() {
                             <div className="w-6 md:w-8 h-[2px] bg-accent-red" />
                         </div>
 
-                        {/* Headline */}
+                        {/* Headline — per-line mask reveal */}
                         <h1 className="font-display text-[2.4rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold text-white mb-7 md:mb-8 leading-tight tracking-[-0.01em] text-center">
-                            Think Big.
-                            <br />
-                            <span className="text-accent-red">Deliver Bigger.</span>
+                            <span className="hero-headline-line" style={{ '--enter-delay': '0.12s' }}>
+                                <span>Think Big.</span>
+                            </span>
+                            <span className="hero-headline-line" style={{ '--enter-delay': '0.24s' }}>
+                                <span className="text-accent-red">Deliver Bigger.</span>
+                            </span>
                         </h1>
 
                         {/* CTA buttons */}
-                        <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-3 mb-8 justify-center items-stretch sm:items-center">
+                        <div className="hero-enter flex flex-col sm:flex-row w-full sm:w-auto gap-3 mb-8 justify-center items-stretch sm:items-center" style={{ '--enter-delay': '0.34s' }}>
                             <a
+                                ref={shipBtnRef}
                                 href="https://www.epx.co.za/"
                                 target="_blank"
                                 rel="noreferrer"
+                                data-cursor
                                 className="btn-hero-primary w-full sm:w-auto justify-center"
                             >
                                 Start Shipping Today
                                 <span className="btn-arrow">→</span>
                             </a>
                             <a
+                                ref={trackBtnRef}
                                 href="https://epx.pperfect.com/"
                                 target="_blank"
                                 rel="noreferrer"
+                                data-cursor
                                 className="btn-hero-ghost w-full sm:w-auto justify-center"
                             >
                                 Track My Parcel
@@ -125,7 +142,8 @@ export default function Hero() {
                         {/* Quick tracking widget */}
                         <form
                             onSubmit={handleTrack}
-                            className="w-full max-w-md flex rounded-[3px] overflow-hidden border border-white/20 bg-black/20 backdrop-blur-sm mb-7"
+                            className="hero-enter w-full max-w-md flex rounded-[3px] overflow-hidden border border-white/20 bg-black/20 backdrop-blur-sm mb-7"
+                            style={{ '--enter-delay': '0.44s' }}
                         >
                             <input
                                 type="text"
@@ -143,7 +161,14 @@ export default function Hero() {
                             </button>
                         </form>
 
-                        <p className="font-inter text-xs md:text-sm text-white/45 max-w-[420px] leading-relaxed text-center">
+                        {/* Live tracking demo — revealed on submit */}
+                        {showTrack && (
+                            <div className="w-full flex justify-center mb-7">
+                                <TrackingTimeline waybill={waybill.trim()} runKey={trackRun} />
+                            </div>
+                        )}
+
+                        <p className="hero-enter font-inter text-xs md:text-sm text-white/45 max-w-[420px] leading-relaxed text-center" style={{ '--enter-delay': '0.54s' }}>
                             South Africa&apos;s trusted enterprise-grade courier network — precision, scale, and unmatched reliability.
                         </p>
                     </div>
@@ -174,17 +199,6 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Toast notification */}
-            {toastMsg && (
-                <div
-                    className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[200] bg-white text-text-primary font-inter text-sm font-medium px-5 py-3 rounded-[3px] shadow-xl flex items-center gap-3 animate-fade-in max-w-[90vw] text-center"
-                    role="status"
-                    aria-live="polite"
-                >
-                    <span className="w-2 h-2 rounded-full bg-accent-red shrink-0" />
-                    {toastMsg}
-                </div>
-            )}
         </section>
     );
 }

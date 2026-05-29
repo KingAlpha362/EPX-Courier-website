@@ -3,7 +3,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HeroTrustSection from './components/HeroTrustSection';
-import LogoStrip from './components/LogoStrip';
 import Features from './components/Features';
 import Services from './components/Services';
 import ImageGallery from './components/ImageGallery';
@@ -27,7 +26,6 @@ function App() {
       <main>
         <Hero />
         <HeroTrustSection />
-        <LogoStrip />
         <Why />
         <Services />
         <DifferentiatorBand />

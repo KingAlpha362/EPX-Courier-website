@@ -14,7 +14,9 @@ export const BRAND = {
 
 export const HERO = {
   background: `${base}/hero/hero-fleet.webp`,
-  backgroundMobile: `${base}/hero/hero-fleet-mobile.webp`,
+  // Mobile uses a portrait-composed delivery shot — a full landscape truck can't
+  // fill a tall phone frame without cropping its ends off.
+  backgroundMobile: `${base}/hero/hero-delivery-mobile.webp`,
 }
 
 export const SERVICES = {
