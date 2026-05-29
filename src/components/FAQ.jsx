@@ -83,7 +83,7 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <section className="bg-primary-dark py-14 md:py-24 px-4 overflow-hidden" id="faq">
+        <section className="bg-primary-dark py-14 md:py-24 pb-20 md:pb-32 px-4 overflow-hidden" id="faq">
             <div className="max-w-[1200px] mx-auto">
                 <div className="text-center mb-10 md:mb-16 reveal">
                     <span className="label-caps text-accent-red mb-4 block font-bold tracking-[0.3em] text-xs">Support</span>
@@ -96,7 +96,7 @@ export default function FAQ() {
                     </p>
                 </div>
 
-                <div className="max-w-3xl mx-auto mb-10 md:mb-20">
+                <div className="max-w-3xl mx-auto mb-14 md:mb-24">
                     {faqs.map((faq, idx) => (
                         <FAQItem
                             key={idx}

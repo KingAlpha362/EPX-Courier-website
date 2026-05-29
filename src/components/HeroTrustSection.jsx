@@ -13,7 +13,7 @@ export default function HeroTrustSection() {
     return (
         <div className="bg-primary-dark border-b border-white/[0.06] overflow-hidden">
             {/* Desktop — centred static row */}
-            <div className="hidden md:flex items-center justify-center gap-0 max-w-[1200px] mx-auto px-8 py-3.5">
+            <div className="hidden md:flex items-center justify-center gap-0 max-w-[1200px] mx-auto px-8 py-5 md:py-6">
                 {features.map((item, i) => (
                     <div key={item.text} className="flex items-center">
                         <div className="flex items-center gap-2 px-5">
@@ -30,7 +30,7 @@ export default function HeroTrustSection() {
             </div>
 
             {/* Mobile — auto-scrolling ticker */}
-            <div className="md:hidden py-3 relative overflow-hidden">
+            <div className="md:hidden py-5 relative overflow-hidden">
                 <style dangerouslySetInnerHTML={{ __html: `
                     @keyframes trust-ticker {
                         0%   { transform: translateX(0); }

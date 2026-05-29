@@ -46,7 +46,7 @@ export default function Features() {
                     </h2>
                 </div>
 
-                <div className="flex flex-col gap-10 md:gap-24">
+                <div className="flex flex-col gap-16 md:gap-28">
                     {featureStories.map((story, idx) => (
                         <div
                             key={idx}

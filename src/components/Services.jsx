@@ -89,7 +89,7 @@ export default function Services() {
                                 </div>
 
                                 {/* Card content */}
-                                <div className="flex flex-col items-start p-4 md:p-6 flex-1">
+                                <div className="flex flex-col items-start p-5 md:p-8 flex-1">
                                     <div className="mb-4 p-3.5 rounded-full bg-accent-red/5 border border-accent-red/10">
                                         <Flaticon icon={service.icon} className="w-8 h-8" />
                                     </div>

@@ -48,14 +48,14 @@ export default function Testimonials() {
                     <h2 className="font-display text-4xl md:text-6xl font-bold text-text-primary leading-tight tracking-tight reveal reveal-delay-1">
                         What They <span className="text-accent-red">Say.</span>
                     </h2>
-                    <p className="mt-4 text-gray-500 font-inter text-sm max-w-xl reveal reveal-delay-2">
+                    <p className="mt-6 text-gray-500 font-inter text-sm max-w-xl reveal reveal-delay-2">
                         Real-time feedback from our enterprise clients and partners across South Africa.
                         Verified via Google Business.
                     </p>
                 </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-5">
                 <TestimonialsCarousel
                     testimonials={testimonials}
                     speed={30}

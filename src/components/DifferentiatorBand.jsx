@@ -24,7 +24,7 @@ export default function DifferentiatorBand() {
                     {differentiators.map((d, i) => (
                         <div
                             key={i}
-                            className={`reveal reveal-delay-${i + 1} py-7 first:pt-0 last:pb-0 md:py-0 md:px-8 md:first:pl-0 md:last:pr-0`}
+                            className={`reveal reveal-delay-${i + 1} py-7 first:pt-0 last:pb-0 md:py-0 md:px-12 lg:px-16 md:first:pl-0 md:last:pr-0`}
                         >
                             <span className="block font-display text-4xl md:text-5xl font-bold text-accent-red mb-3 leading-none">
                                 {d.stat}

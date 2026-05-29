@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-8">Quick Links</h5>
+            <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-5">Quick Links</h5>
             <div className="flex flex-col gap-2 text-[#94A3B8] text-sm font-inter">
               <a href="https://epx.pperfect.com/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Track Your Parcel</a>
               <a href="https://www.epx.co.za/" className="hover:text-white transition-colors py-2" target="_blank" rel="noreferrer">Get a Quote</a>
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-8">Contact</h5>
+            <h5 className="text-white font-inter font-semibold uppercase tracking-[0.1em] text-[13px] mb-5">Contact</h5>
             <div className="flex flex-col gap-4 text-[#94A3B8] text-sm font-inter">
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] uppercase tracking-widest text-white/30">National</span>
@@ -106,7 +106,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-black/30 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-inter text-[#64748B]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-inter text-[#64748B]">
           <span>© 2026 E.P.X. Courier Services. All rights reserved.</span>
           <div className="flex flex-wrap gap-6 items-center justify-center">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

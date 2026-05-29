@@ -19,7 +19,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Desktop: 2-col grid — tall left, 3 cells right */}
-                <div className="hidden md:grid md:grid-cols-[2fr_1fr] md:grid-rows-[240px_240px_240px] gap-4">
+                <div className="hidden md:grid md:grid-cols-[2fr_1fr] md:grid-rows-[240px_240px_240px] gap-4 md:gap-6">
                     {/* Tall image spanning all 3 rows */}
                     <div className="group relative overflow-hidden rounded-[6px] row-span-3">
                         <img

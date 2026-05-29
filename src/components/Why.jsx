@@ -10,7 +10,7 @@ const whyFeatures = [
 
 export default function Why() {
     return (
-        <section className="bg-primary-dark overflow-hidden" id="why">
+        <section className="bg-primary-dark overflow-hidden py-14 md:py-24" id="why">
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
@@ -42,7 +42,7 @@ export default function Why() {
                             A Polished <br className="hidden sm:block" /> Evolution <br />
                             <span className="text-accent-red">of Logistics.</span>
                         </h2>
-                        <p className="text-base md:text-lg text-white/70 font-inter mb-8 md:mb-12 leading-relaxed reveal reveal-delay-2">
+                        <p className="text-base md:text-lg text-white/70 font-inter mb-12 md:mb-16 leading-relaxed reveal reveal-delay-2">
                             Brothers James and Garreth Edwards founded Edwards Parcel Express in April 1999, starting with an overnight express
                             link between Polokwane and Johannesburg. Today, E.P.X. Courier Services brings that same ethos —{' '}
                             <span className="text-white font-semibold">&ldquo;It&rsquo;s All About You&rdquo;</span>{' '}

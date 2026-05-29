@@ -86,7 +86,7 @@ export default function Hero() {
                         </h1>
 
                         {/* CTA buttons */}
-                        <div className="hero-enter flex flex-col sm:flex-row w-full sm:w-auto gap-3 mb-8 justify-center items-stretch sm:items-center" style={{ '--enter-delay': '0.34s' }}>
+                        <div className="hero-enter flex flex-col sm:flex-row w-full sm:w-auto gap-3 mb-12 justify-center items-stretch sm:items-center" style={{ '--enter-delay': '0.34s' }}>
                             <a
                                 ref={shipBtnRef}
                                 href="https://www.epx.co.za/"
@@ -114,7 +114,7 @@ export default function Hero() {
                         {/* Quick tracking widget */}
                         <form
                             onSubmit={handleTrack}
-                            className="hero-enter w-full max-w-md flex rounded-[3px] overflow-hidden border border-white/20 bg-black/20 backdrop-blur-sm mb-7"
+                            className="hero-enter w-full max-w-md flex rounded-[3px] overflow-hidden border border-white/20 bg-black/20 backdrop-blur-sm mb-10"
                             style={{ '--enter-delay': '0.44s' }}
                         >
                             <input
