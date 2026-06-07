@@ -23,7 +23,7 @@ export default function Why() {
                                 alt="EPX Courier Services fleet truck"
                                 width={960}
                                 height={640}
-                                loading="lazy"
+                                loading="eager"
                                 className="w-full h-full object-cover object-center"
                             />
                             {/* Brand callout overlay */}
@@ -40,7 +40,7 @@ export default function Why() {
                                 alt="EPX fleet at depot"
                                 width={960}
                                 height={640}
-                                loading="lazy"
+                                loading="eager"
                                 className="w-full h-full object-cover object-center"
                             />
                         </div>
