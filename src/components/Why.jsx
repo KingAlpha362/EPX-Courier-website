@@ -14,8 +14,8 @@ export default function Why() {
             <div className="max-w-[1200px] mx-auto px-4 md:px-8">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
-                    {/* Story image — sticky on desktop, normal flow on mobile */}
-                    <div className="w-full lg:w-1/2 lg:sticky lg:top-24 lg:self-start">
+                    {/* Story image */}
+                    <div className="w-full lg:w-1/2">
                         <div className="flex flex-col gap-4">
                         <div className="relative w-full aspect-[4/3] md:aspect-video lg:aspect-[3/2] overflow-hidden rounded-[2px]">
                             <img
