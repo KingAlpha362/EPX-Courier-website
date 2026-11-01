@@ -1,16 +1,48 @@
-# React + Vite
+![EPX Courier Website — project cover](https://raw.githubusercontent.com/KingAlpha362/KingAlpha362/main/assets/covers/web.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EPX Courier Website
 
-Currently, two official plugins are available:
+A React front-end project for a courier-service website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Highlights
 
-## React Compiler
+- Coverage, services, branch-location, tracking-timeline, and FAQ components.
+- Reusable interface elements and a substantial image library.
+- Playwright configuration and a browser-test file are included.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting started
 
-## Expanding the ESLint configuration
+Install Node.js compatible with the checked-in dependencies and npm, then run:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```sh
+npm ci
+npm run dev
+```
+
+Open the local URL printed by the development server.
+
+```sh
+npm run build
+npm run preview
+```
+
+The build output is written to `dist/`. Run `npm run lint` for the configured lint check.
+
+## 🗂️ Repository guide
+
+- [eslint.config.js](eslint.config.js)
+- [index.html](index.html)
+- [package.json](package.json)
+- [playwright.config.ts](playwright.config.ts)
+- [postcss.config.js](postcss.config.js)
+- [src/App.jsx](src/App.jsx)
+- [src/index.css](src/index.css)
+- [src/main.jsx](src/main.jsx)
+
+## 📝 Project notes
+
+Brand assets and marketing copy are project content; this README does not establish a client relationship or production deployment.
+
+---
+
+[← Portfolio](https://github.com/KingAlpha362/KingAlpha362) · [Browse all projects](https://github.com/KingAlpha362/KingAlpha362/blob/main/PORTFOLIO.md)
